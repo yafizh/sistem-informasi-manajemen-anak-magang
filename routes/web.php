@@ -30,6 +30,7 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::controller(MainInternshipApplicationController::class)->group(function ()
 {
+    Route::get('/internship-application-success', 'indexSuccess');
     Route::get('/internship-application', 'index');
     Route::post('/internship-application', 'store');
 });
