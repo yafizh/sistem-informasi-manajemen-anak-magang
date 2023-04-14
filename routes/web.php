@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\EmployeeController as AdminEmployeeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,33 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('main.index');
+});
+Route::get('/login', function () {
+    return view('main.login');
+});
+Route::get('/internship-application', function () {
+    return view('main.internship_application');
+});
+
+Route::prefix('admin')->group(function ()
+{
+    Route::get('/', function () {
+        return view('dashboard.admin.dashboard.index');
+    });
+    Route::resource('employees', AdminEmployeeController::class);
+});
+
+Route::prefix('supervisor')->group(function ()
+{
+    Route::get('/', function () {
+        // return view('dashboard.admin.dashboard.index');
+    });
+});
+
+Route::prefix('student')->group(function ()
+{
+    Route::get('/', function () {
+        // return view('dashboard.admin.dashboard.index');
+    });
 });
