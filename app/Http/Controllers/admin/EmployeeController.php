@@ -45,6 +45,7 @@ class EmployeeController extends Controller
         $validatedData['user_id'] = User::create([
             'username' => $validatedData['id_number'],
             'password' => bcrypt($validatedData['id_number']),
+            'status' => 'Employee'
         ])->id;
 
         Employee::create($validatedData);

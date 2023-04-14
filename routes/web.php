@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\admin\EmployeeController as AdminEmployeeController;
+use App\Http\Controllers\admin\AdminController as AdminAdminController;
+use App\Http\Controllers\admin\SupervisorController as AdminSupervisorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +32,8 @@ Route::prefix('admin')->group(function ()
         return view('dashboard.admin.dashboard.index');
     });
     Route::resource('employees', AdminEmployeeController::class);
+    Route::resource('admin', AdminAdminController::class);
+    Route::resource('supervisor', AdminSupervisorController::class);
 });
 
 Route::prefix('supervisor')->group(function ()

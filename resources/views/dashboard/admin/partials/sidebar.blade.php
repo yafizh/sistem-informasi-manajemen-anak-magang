@@ -36,13 +36,40 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="#" class="menu-link">
+                    <a href="/admin/admin" class="menu-link">
                         <div data-i18n="Account">Admin</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="#" class="menu-link">
+                    <a href="/admin/supervisor" class="menu-link">
                         <div data-i18n="Notifications">Pembimbing</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Magang</span>
+        </li>
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                <div data-i18n="Account Settings">Pendaftaran</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="#" class="menu-link">
+                        <div data-i18n="Account">Pengajuan</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-link">
+                        <div data-i18n="Notifications">Diterima</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-link">
+                        <div data-i18n="Notifications">Ditolak</div>
                     </a>
                 </li>
             </ul>
@@ -79,33 +106,6 @@
                 <li class="menu-item">
                     <a href="#" class="menu-link">
                         <div data-i18n="Notifications">Selesai</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-
-        <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Magang</span>
-        </li>
-        <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">Pendaftaran</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
-                        <div data-i18n="Account">Pengajuan</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
-                        <div data-i18n="Notifications">Diterima</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
-                        <div data-i18n="Notifications">Ditolak</div>
                     </a>
                 </li>
             </ul>
