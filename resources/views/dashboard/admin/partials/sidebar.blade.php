@@ -58,17 +58,17 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="#" class="menu-link">
+                    <a href="/admin/internship-application" class="menu-link">
                         <div data-i18n="Account">Pengajuan</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="#" class="menu-link">
+                    <a href="/admin/internship-application/approved" class="menu-link">
                         <div data-i18n="Notifications">Diterima</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="#" class="menu-link">
+                    <a href="/admin/internship-application/rejected" class="menu-link">
                         <div data-i18n="Notifications">Ditolak</div>
                     </a>
                 </li>
@@ -77,17 +77,17 @@
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">Siswa Magang</div>
+                <div data-i18n="Account Settings">Kegiatan Berjalan</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
                     <a href="pages-account-settings-account.html" class="menu-link">
-                        <div data-i18n="Account">Aktif</div>
+                        <div data-i18n="Account">Siswa</div>
                     </a>
                 </li>
                 <li class="menu-item">
                     <a href="#" class="menu-link">
-                        <div data-i18n="Notifications">Selesai</div>
+                        <div data-i18n="Notifications">Mahasiswa</div>
                     </a>
                 </li>
             </ul>
@@ -95,17 +95,17 @@
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">Mahasiswa Magang</div>
+                <div data-i18n="Account Settings">Kegiatan Selesai</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
                     <a href="pages-account-settings-account.html" class="menu-link">
-                        <div data-i18n="Account">Aktif</div>
+                        <div data-i18n="Account">Siswa</div>
                     </a>
                 </li>
                 <li class="menu-item">
                     <a href="#" class="menu-link">
-                        <div data-i18n="Notifications">Selesai</div>
+                        <div data-i18n="Notifications">Mahasiswa</div>
                     </a>
                 </li>
             </ul>

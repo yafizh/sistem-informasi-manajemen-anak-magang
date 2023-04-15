@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\EmployeeController as AdminEmployeeController;
 use App\Http\Controllers\admin\AdminController as AdminAdminController;
 use App\Http\Controllers\admin\SupervisorController as AdminSupervisorController;
+use App\Http\Controllers\admin\InternshipApplicationController as AdminInternshipApplicationController;
 use App\Http\Controllers\main\AuthController;
 use App\Http\Controllers\main\InternshipApplicationController as MainInternshipApplicationController;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +47,18 @@ Route::prefix('admin')->group(function () {
     Route::resource('employees', AdminEmployeeController::class);
     Route::resource('admin', AdminAdminController::class);
     Route::resource('supervisor', AdminSupervisorController::class);
+
+    Route::prefix('internship-application')->controller(AdminInternshipApplicationController::class)->group(function ()
+    {
+        // Order Matters
+        Route::get('/', 'index');
+        Route::get('/rejected', 'rejected');
+        Route::get('/approved', 'approved');
+        Route::get('/{internshipApplication}', 'show');
+        Route::delete('/{internshipApplication}', 'destroy');
+        Route::put('/approve/{internshipApplication}', 'approve');
+        Route::put('/reject/{internshipApplication}', 'reject');
+    });
 });
 
 Route::prefix('supervisor')->group(function () {

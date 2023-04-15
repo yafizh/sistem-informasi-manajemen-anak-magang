@@ -25,7 +25,7 @@
                                     placeholder="NIP Pegawai" value="{{ old('id_number') }}" required />
                             </div>
                             <div class="mb-3">
-                                <label for="name" class="form-label">Name</label>
+                                <label for="name" class="form-label">Nama</label>
                                 <input type="text" class="form-control" id="name" name="name"
                                     placeholder="Nama Pegawai" value="{{ old('name') }}" required />
                             </div>
