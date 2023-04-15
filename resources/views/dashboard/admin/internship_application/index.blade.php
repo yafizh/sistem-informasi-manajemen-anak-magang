@@ -8,10 +8,7 @@
         }
     </style>
     <div class="container-xxl flex-grow-1 container-p-y">
-        <div class="d-flex justify-content-between py-3 align-items-center">
-            <h4 class="fw-bold align-middle mb-0">Data Pengajuan Magang</h4>
-            <a href="/admin/employees/create" class="btn btn-primary">Tambah</a>
-        </div>
+        <h4 class="fw-bold">Data Pengajuan Magang</h4>
 
         <div class="card">
             <div class="table-responsive text-nowrap" style="overflow: hidden!important;">

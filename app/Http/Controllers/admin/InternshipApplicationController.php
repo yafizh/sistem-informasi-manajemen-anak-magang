@@ -13,6 +13,8 @@ class InternshipApplicationController extends Controller
     {
         $status = "Pending";
         return view('dashboard.admin.internship_application.index', [
+            'sidebar' => 'internship-applications',
+            'sub_sidebar' => 'pending',
             'status' => $status,
             'internship_applications' => InternshipApplication::where('status', $status)->orderBy('id', 'DESC')->get()
         ]);
@@ -20,12 +22,24 @@ class InternshipApplicationController extends Controller
 
     public function show(InternshipApplication $internshipApplication)
     {
+
+        if ($internshipApplication->status === 'Pending')
+            $sub_sidebar = "pending";
+
+        if ($internshipApplication->status === 'Approved')
+            $sub_sidebar = "approved";
+
+        if ($internshipApplication->status === 'Pending')
+            $sub_sidebar = "rejected";
+
         $start_date = new Carbon($internshipApplication->start_date);
         $end_date = new Carbon($internshipApplication->end_date);
 
         $internshipApplication->start_date = $start_date->day . ' ' . $start_date->locale('ID')->getTranslatedMonthName() . ' ' . $start_date->year;
         $internshipApplication->end_date = $end_date->day . ' ' . $end_date->locale('ID')->getTranslatedMonthName() . ' ' . $end_date->year;
         return view('dashboard.admin.internship_application.show', [
+            'sidebar' => 'internship-applications',
+            'sub_sidebar' => $sub_sidebar,
             'internship_application' => $internshipApplication
         ]);
     }
@@ -43,6 +57,8 @@ class InternshipApplicationController extends Controller
     {
         $status = "Approved";
         return view('dashboard.admin.internship_application.index', [
+            'sidebar' => 'internship-applications',
+            'sub_sidebar' => 'approved',
             'status' => $status,
             'internship_applications' => InternshipApplication::where('status', $status)->orderBy('id', 'DESC')->get()
         ]);
@@ -61,6 +77,8 @@ class InternshipApplicationController extends Controller
     {
         $status = "Rejected";
         return view('dashboard.admin.internship_application.index', [
+            'sidebar' => 'internship-applications',
+            'sub_sidebar' => 'rejected',
             'status' => $status,
             'internship_applications' => InternshipApplication::where('status', $status)->orderBy('id', 'DESC')->get()
         ]);

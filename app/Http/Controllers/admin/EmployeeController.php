@@ -13,13 +13,16 @@ class EmployeeController extends Controller
     public function index()
     {
         return view('dashboard.admin.employees.index', [
+            'sidebar' => 'employees',
             'employees' => Employee::orderBy('name')->get()
         ]);
     }
 
     public function create()
     {
-        return view('dashboard.admin.employees.create');
+        return view('dashboard.admin.employees.create', [
+            'sidebar' => 'employees',
+        ]);
     }
 
     public function store(Request $request)
@@ -56,6 +59,7 @@ class EmployeeController extends Controller
     public function show(Employee $employee)
     {
         return view('dashboard.admin.employees.show', [
+            'sidebar' => 'employees',
             'employee' => $employee
         ]);
     }
@@ -63,6 +67,7 @@ class EmployeeController extends Controller
     public function edit(Employee $employee)
     {
         return view('dashboard.admin.employees.edit', [
+            'sidebar' => 'employees',
             'employee' => $employee
         ]);
     }

@@ -13,13 +13,13 @@
 
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
-        <li class="menu-item active">
+        <li class="menu-item {{ $sidebar === 'dashboard' ? 'active' : '' }}">
             <a href="/admin" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
         </li>
-        <li class="menu-item">
+        <li class="menu-item {{ $sidebar === 'employees' ? 'active' : '' }}">
             <a href="/admin/employees" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Pegawai</div>
@@ -29,18 +29,18 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Pengguna</span>
         </li>
-        <li class="menu-item">
+        <li class="menu-item {{ $sidebar === 'users' ? 'active open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
                 <div data-i18n="Account Settings">Pegawai</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item">
+                <li class="menu-item {{ ($sub_sidebar ?? '') === 'admin' ? 'active' : '' }}">
                     <a href="/admin/admin" class="menu-link">
                         <div data-i18n="Account">Admin</div>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item {{ ($sub_sidebar ?? '') === 'supervisor' ? 'active' : '' }}">
                     <a href="/admin/supervisor" class="menu-link">
                         <div data-i18n="Notifications">Pembimbing</div>
                     </a>
@@ -51,23 +51,23 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Magang</span>
         </li>
-        <li class="menu-item">
+        <li class="menu-item {{ $sidebar === 'internship-applications' ? 'active open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
                 <div data-i18n="Account Settings">Pendaftaran</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item">
+                <li class="menu-item {{ ($sub_sidebar ?? '') === 'pending' ? 'active' : '' }}">
                     <a href="/admin/internship-application" class="menu-link">
                         <div data-i18n="Account">Pengajuan</div>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item {{ ($sub_sidebar ?? '') === 'approved' ? 'active' : '' }}">
                     <a href="/admin/internship-application/approved" class="menu-link">
                         <div data-i18n="Notifications">Diterima</div>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item {{ ($sub_sidebar ?? '') === 'rejected' ? 'active' : '' }}">
                     <a href="/admin/internship-application/rejected" class="menu-link">
                         <div data-i18n="Notifications">Ditolak</div>
                     </a>

@@ -29,8 +29,7 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('/logout', 'logout');
 });
 
-Route::controller(MainInternshipApplicationController::class)->group(function ()
-{
+Route::controller(MainInternshipApplicationController::class)->group(function () {
     Route::get('/internship-application-success', 'indexSuccess');
     Route::get('/internship-application', 'index');
     Route::post('/internship-application', 'store');
@@ -42,14 +41,15 @@ Route::get('/internship-application', function () {
 
 Route::prefix('admin')->group(function () {
     Route::get('/', function () {
-        return view('dashboard.admin.dashboard.index');
+        return view('dashboard.admin.dashboard.index', [
+            'sidebar' => 'dashboard'
+        ]);
     });
     Route::resource('employees', AdminEmployeeController::class);
     Route::resource('admin', AdminAdminController::class);
     Route::resource('supervisor', AdminSupervisorController::class);
 
-    Route::prefix('internship-application')->controller(AdminInternshipApplicationController::class)->group(function ()
-    {
+    Route::prefix('internship-application')->controller(AdminInternshipApplicationController::class)->group(function () {
         // Order Matters
         Route::get('/', 'index');
         Route::get('/rejected', 'rejected');
