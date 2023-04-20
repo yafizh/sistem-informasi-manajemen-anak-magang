@@ -12,7 +12,9 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1">
-        <!-- Dashboard -->
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Utama</span>
+        </li>
         <li class="menu-item {{ $sidebar === 'dashboard' ? 'active' : '' }}">
             <a href="/admin" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
@@ -23,6 +25,18 @@
             <a href="/admin/employees" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Pegawai</div>
+            </a>
+        </li>
+        <li class="menu-item {{ $sidebar === 'students1' ? 'active' : '' }}">
+            <a href="/admin/students?student_status=1" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Siswa</div>
+            </a>
+        </li>
+        <li class="menu-item {{ $sidebar === 'students2' ? 'active' : '' }}">
+            <a href="/admin/students?student_status=2" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Mahasiswa</div>
             </a>
         </li>
 
@@ -43,6 +57,16 @@
                 <li class="menu-item {{ ($sub_sidebar ?? '') === 'supervisor' ? 'active' : '' }}">
                     <a href="/admin/supervisor" class="menu-link">
                         <div data-i18n="Notifications">Pembimbing</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ ($sub_sidebar ?? '') === '1' ? 'active' : '' }}">
+                    <a href="/admin/supervisor" class="menu-link">
+                        <div data-i18n="Notifications">Siswa</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ ($sub_sidebar ?? '') === '2' ? 'active' : '' }}">
+                    <a href="/admin/supervisor" class="menu-link">
+                        <div data-i18n="Notifications">Mahasiswa</div>
                     </a>
                 </li>
             </ul>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\main;
 
 use App\Http\Controllers\Controller;
 use App\Models\InternshipApplication;
+use App\Models\Student;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -23,10 +25,17 @@ class InternshipApplicationController extends Controller
             'institution' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
+            'student_status' => 'required',
         ]);
 
-        $validatedData['application_date'] = Carbon::now()->toDateString();
-        InternshipApplication::create($validatedData);
+        $validatedData['application_date'] = Carbon::now();
+        $validatedData['internship_application_id'] = InternshipApplication::create($validatedData)->id;
+        $validatedData['user_id'] = User::create([
+            'username' => $validatedData['id_number'],
+            'password' => bcrypt($validatedData['id_number']),
+            'status' => 'Student'
+        ])->id;
+        Student::create($validatedData);
 
         return redirect('/internship-application-success');
     }

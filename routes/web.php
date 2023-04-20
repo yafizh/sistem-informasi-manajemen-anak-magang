@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\EmployeeController as AdminEmployeeController;
 use App\Http\Controllers\admin\AdminController as AdminAdminController;
 use App\Http\Controllers\admin\SupervisorController as AdminSupervisorController;
 use App\Http\Controllers\admin\InternshipApplicationController as AdminInternshipApplicationController;
+use App\Http\Controllers\admin\StudentController as AdminStudentController;
 use App\Http\Controllers\main\AuthController;
 use App\Http\Controllers\main\InternshipApplicationController as MainInternshipApplicationController;
 use Illuminate\Support\Facades\Route;
@@ -45,6 +46,7 @@ Route::prefix('admin')->group(function () {
             'sidebar' => 'dashboard'
         ]);
     });
+    Route::resource('students', AdminStudentController::class);
     Route::resource('employees', AdminEmployeeController::class);
     Route::resource('admin', AdminAdminController::class);
     Route::resource('supervisor', AdminSupervisorController::class);
@@ -63,12 +65,12 @@ Route::prefix('admin')->group(function () {
 
 Route::prefix('supervisor')->group(function () {
     Route::get('/', function () {
-        // return view('dashboard.admin.dashboard.index');
+        return view('dashboard.supervisor.dashboard.index');
     });
 });
 
 Route::prefix('student')->group(function () {
     Route::get('/', function () {
-        // return view('dashboard.admin.dashboard.index');
+        return view('dashboard.student.dashboard.index');
     });
 });

@@ -8,17 +8,19 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('internship_applications', function (Blueprint $table) {
+        Schema::create('students', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('internship_application_id');
             $table->string('id_number');
             $table->string('name');
+            $table->string('birth_place')->nullable();
+            $table->date('birth_date')->nullable();
+            $table->string('sex')->nullable();
             $table->string('email');
+            $table->string('phone_number')->nullable();
             $table->string('institution');
-            $table->string('start_date');
-            $table->string('end_date');
-            $table->date('application_date');
-            $table->unsignedTinyInteger('application_status')->default(1)->comment('1=Pending|2=Approved|3=Rejected');
-            $table->date('verification_date')->nullable()->default(null);
+            $table->string('photo')->nullable();
             $table->unsignedTinyInteger('student_status')->comment('1=Siswa|2=Mahasiswa');
             $table->timestamps();
         });
@@ -26,6 +28,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('internship_applications');
+        Schema::dropIfExists('students');
     }
 };
