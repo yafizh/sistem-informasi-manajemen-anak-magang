@@ -14,7 +14,7 @@
 
         <div class="card">
             <div class="table-responsive text-nowrap" style="overflow: hidden!important;">
-                <table class="table dataTables">
+                <table class="table dataTables pb-5">
                     <thead>
                         <tr>
                             <th class="fit text-center">No</th>
@@ -38,6 +38,9 @@
                                             <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
                                         <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="/admin/students/{{ $student->id }}">
+                                                <i class="bx bx-edit-alt me-2"></i> Lihat
+                                            </a>
                                             <a class="dropdown-item" href="/admin/students/{{ $student->id }}/edit">
                                                 <i class="bx bx-edit-alt me-2"></i> Edit
                                             </a>

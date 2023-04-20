@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold">Detail Pegawai</h4>
+        <h4 class="fw-bold">Detail Siswa/Mahasiswa</h4>
 
         <div class="row">
             <div class="col-md-12">
@@ -22,7 +22,7 @@
                 <div class="card mb-4">
                     <div class="card-body">
                         <div class="d-flex align-items-start align-items-sm-center gap-4">
-                            <img src="{{ asset('storage/' . $employee->photo) }}" alt="user-avatar" class="d-block rounded"
+                            <img src="{{ asset('storage/' . $student->photo) }}" alt="user-avatar" class="d-block rounded"
                                 height="100" width="100" id="uploadedAvatar" />
                         </div>
                     </div>
@@ -30,38 +30,50 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="mb-3 col-md-6">
-                                <label class="form-label">NIP</label>
-                                <input class="form-control" type="text" disabled value="{{ $employee->id_number }}" />
+                                <label class="form-label">NIM/NIS/NPM</label>
+                                <input class="form-control" type="text" disabled value="{{ $student->id_number }}" />
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label class="form-label">Nama</label>
-                                <input class="form-control" type="text" disabled value="{{ $employee->name }}" />
+                                <input class="form-control" type="text" disabled value="{{ $student->name }}" />
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label class="form-label">Nomor Telepon</label>
-                                <input class="form-control" type="text" disabled value="{{ $employee->phone_number }}" />
+                                <input class="form-control" type="text" disabled value="{{ $student->phone_number }}" />
                             </div>
 
                             <div class="mb-3 col-md-6">
                                 <label class="form-label">Tempat Lahir</label>
-                                <input class="form-control" type="text" disabled value="{{ $employee->birth_place }}" />
+                                <input class="form-control" type="text" disabled value="{{ $student->birth_place }}" />
                             </div>
 
                             <div class="mb-3 col-md-6">
                                 <label class="form-label">Tanggal Lahir</label>
-                                <input class="form-control" type="text" disabled value="{{ $employee->birth_date }}" />
+                                <input class="form-control" type="text" disabled value="{{ $student->birth_date }}" />
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label class="form-label">Email</label>
-                                <input class="form-control" type="text" disabled value="{{ $employee->email }}" />
+                                <input class="form-control" type="text" disabled value="{{ $student->email }}" />
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label class="form-label">Jenis Kelamin</label>
-                                <input class="form-control" type="text" disabled value="{{ $employee->sex }}" />
+                                <input class="form-control" type="text" disabled value="{{ $student->sex }}" />
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label">Nama Sekolah atau Nama Kampus</label>
+                                <input class="form-control" type="text" disabled value="{{ $student->institution }}" />
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label">Status</label>
+                                @if ($student->student_status == 1)
+                                    <input class="form-control" type="text" disabled value="Siswa" />
+                                @elseif ($student->student_status == 2)
+                                    <input class="form-control" type="text" disabled value="Mahasiswa" />
+                                @endif
                             </div>
                             <div class="col-12 d-flex justify-content-end gap-2">
-                                <a href="/admin/employees/{{ $employee->id }}/edit" class="btn btn-warning">Edit</a>
-                                <form action="/admin/employees/{{ $employee->id }}" method="POST">
+                                <a href="/admin/students/{{ $student->id }}/edit" class="btn btn-warning">Edit</a>
+                                <form action="/admin/students/{{ $student->id }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">
