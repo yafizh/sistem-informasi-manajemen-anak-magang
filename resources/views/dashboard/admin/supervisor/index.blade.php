@@ -37,6 +37,9 @@
                                             <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
                                         <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="/change-password?user_id={{ $employee->id }}">
+                                                <i class="bx bx-edit-alt me-2"></i> Ganti Password
+                                            </a>
                                             <form action="/admin/supervisor/{{ $employee->id }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')

@@ -15,7 +15,7 @@ class SupervisorController extends Controller
             $q->where('status', 'Supervisor');
         })->get();
         return view('dashboard.admin.supervisor.index', [
-            'sidebar' => 'users',
+            'sidebar' => 'user-employees',
             'sub_sidebar' => 'supervisor',
             'employees' => $employees
         ]);
@@ -27,7 +27,7 @@ class SupervisorController extends Controller
             $q->where('status', 'Employee');
         })->get();
         return view('dashboard.admin.supervisor.create', [
-            'sidebar' => 'users',
+            'sidebar' => 'user-employees',
             'sub_sidebar' => 'supervisor',
             'employees' => $employees
         ]);

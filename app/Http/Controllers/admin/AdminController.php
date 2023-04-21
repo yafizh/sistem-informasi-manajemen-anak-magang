@@ -15,7 +15,7 @@ class AdminController extends Controller
             $q->where('status', 'Admin');
         })->get();
         return view('dashboard.admin.admin.index', [
-            'sidebar' => 'users',
+            'sidebar' => 'user-employees',
             'sub_sidebar' => 'admin',
             'employees' => $employees
         ]);
@@ -27,7 +27,7 @@ class AdminController extends Controller
             $q->where('status', 'Employee');
         })->get();
         return view('dashboard.admin.admin.create', [
-            'sidebar' => 'users',
+            'sidebar' => 'user-employees',
             'sub_sidebar' => 'admin',
             'employees' => $employees
         ]);
