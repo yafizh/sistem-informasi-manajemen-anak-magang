@@ -5,8 +5,10 @@ use App\Http\Controllers\admin\AdminController as AdminAdminController;
 use App\Http\Controllers\admin\SupervisorController as AdminSupervisorController;
 use App\Http\Controllers\admin\InternshipApplicationController as AdminInternshipApplicationController;
 use App\Http\Controllers\admin\StudentController as AdminStudentController;
+use App\Http\Controllers\admin\UserStudentController as AdminUserStudentController;
 use App\Http\Controllers\main\AuthController;
 use App\Http\Controllers\main\InternshipApplicationController as MainInternshipApplicationController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +42,11 @@ Route::get('/internship-application', function () {
     return view('main.internship_application');
 });
 
+Route::controller(ProfileController::class)->group(function () {
+    Route::get('/change-password', 'changePassword');
+    Route::put('/change-password', 'updatePassword');
+});
+
 Route::prefix('admin')->group(function () {
     Route::get('/', function () {
         return view('dashboard.admin.dashboard.index', [
@@ -50,6 +57,7 @@ Route::prefix('admin')->group(function () {
     Route::resource('employees', AdminEmployeeController::class);
     Route::resource('admin', AdminAdminController::class);
     Route::resource('supervisor', AdminSupervisorController::class);
+    Route::resource('user-students', AdminUserStudentController::class);
 
     Route::prefix('internship-application')->controller(AdminInternshipApplicationController::class)->group(function () {
         // Order Matters

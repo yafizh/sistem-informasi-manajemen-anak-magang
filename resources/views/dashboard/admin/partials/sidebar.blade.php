@@ -43,7 +43,7 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Pengguna</span>
         </li>
-        <li class="menu-item {{ $sidebar === 'users' ? 'active open' : '' }}">
+        <li class="menu-item {{ $sidebar === 'user-employees' ? 'active open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
                 <div data-i18n="Account Settings">Pegawai</div>
@@ -59,18 +59,27 @@
                         <div data-i18n="Notifications">Pembimbing</div>
                     </a>
                 </li>
-                <li class="menu-item {{ ($sub_sidebar ?? '') === '1' ? 'active' : '' }}">
-                    <a href="/admin/supervisor" class="menu-link">
+            </ul>
+        </li>
+        <li class="menu-item {{ $sidebar === 'user-students' ? 'active open' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                <div data-i18n="Account Settings">Magang</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ ($sub_sidebar ?? '') === 'students1' ? 'active' : '' }}">
+                    <a href="/admin/user-students?student_status=1" class="menu-link">
                         <div data-i18n="Notifications">Siswa</div>
                     </a>
                 </li>
-                <li class="menu-item {{ ($sub_sidebar ?? '') === '2' ? 'active' : '' }}">
-                    <a href="/admin/supervisor" class="menu-link">
+                <li class="menu-item {{ ($sub_sidebar ?? '') === 'students2' ? 'active' : '' }}">
+                    <a href="/admin/user-students?student_status=2" class="menu-link">
                         <div data-i18n="Notifications">Mahasiswa</div>
                     </a>
                 </li>
             </ul>
         </li>
+
 
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Magang</span>
