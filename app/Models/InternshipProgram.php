@@ -15,4 +15,9 @@ class InternshipProgram extends Model
     {
         return $this->belongsTo(Employee::class, 'employee_id', 'id');
     }
+
+    public function students()
+    {
+        return $this->belongsToMany(Student::class, 'internship_students', 'internship_program_id', 'student_id');
+    }
 }

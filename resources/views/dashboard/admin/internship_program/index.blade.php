@@ -43,8 +43,8 @@
                                         </button>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item"
-                                                href="/admin/internship-programs/{{ $internship_program->id }}/students">
-                                                <i class="bx bx-edit-alt me-2"></i> Lihat Siswa/Mahasiswa
+                                                href="/admin/internship-programs/{{ $internship_program->id }}?student_status={{ request()->get('student_status') }}">
+                                                <i class="bx bx-edit-alt me-2"></i> Lihat
                                             </a>
                                             <a class="dropdown-item"
                                                 href="/admin/internship-programs/{{ $internship_program->id }}/edit">

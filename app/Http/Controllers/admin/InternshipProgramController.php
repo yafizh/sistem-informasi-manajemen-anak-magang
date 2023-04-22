@@ -67,7 +67,20 @@ class InternshipProgramController extends Controller
 
     public function show(InternshipProgram $internshipProgram)
     {
-        //
+        return view('dashboard.admin.internship_program.show', [
+            'internship_program' => $internshipProgram,
+            'sidebar' => 'internship-programs',
+            'sub_sidebar' => 'students' . request()->get('student_status'),
+        ]);
+    }
+
+    public function supervisor(InternshipProgram $internshipProgram)
+    {
+        return view('dashboard.admin.internship_program.supervisor', [
+            'internship_program' => $internshipProgram,
+            'sidebar' => 'internship-programs',
+            'sub_sidebar' => 'students' . request()->get('student_status'),
+        ]);
     }
 
     public function edit(InternshipProgram $internshipProgram)

@@ -18,6 +18,6 @@ class Employee extends Model
 
     public function internshipPrograms()
     {
-        return $this->hasMany(internshipProgram::class);
+        return $this->hasMany(InternshipProgram::class);
     }
 }

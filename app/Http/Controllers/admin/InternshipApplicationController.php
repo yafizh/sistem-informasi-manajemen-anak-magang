@@ -11,7 +11,7 @@ class InternshipApplicationController extends Controller
 {
     public function index()
     {
-        $status = "Pending";
+        $status = 1;
         return view('dashboard.admin.internship_application.index', [
             'sidebar' => 'internship-applications',
             'sub_sidebar' => 'pending',
@@ -23,13 +23,13 @@ class InternshipApplicationController extends Controller
     public function show(InternshipApplication $internshipApplication)
     {
 
-        if ($internshipApplication->application_status === 'Pending')
+        if ($internshipApplication->application_status == '1')
             $sub_sidebar = "pending";
 
-        if ($internshipApplication->application_status === 'Approved')
+        if ($internshipApplication->application_status == 2)
             $sub_sidebar = "approved";
 
-        if ($internshipApplication->application_status === 'Pending')
+        if ($internshipApplication->application_status == 3)
             $sub_sidebar = "rejected";
 
         $start_date = new Carbon($internshipApplication->start_date);
@@ -48,7 +48,7 @@ class InternshipApplicationController extends Controller
     {
         InternshipApplication::where('id', $internshipApplication->id)->update([
             'verification_date' => Carbon::now()->toDateString(),
-            'application_status' => 'Approved'
+            'application_status' => 2
         ]);
 
         return redirect('/admin/internship-application/approved');
@@ -56,7 +56,7 @@ class InternshipApplicationController extends Controller
 
     public function approved()
     {
-        $status = "Approved";
+        $status = 2;
         return view('dashboard.admin.internship_application.index', [
             'sidebar' => 'internship-applications',
             'sub_sidebar' => 'approved',
@@ -69,7 +69,7 @@ class InternshipApplicationController extends Controller
     {
         InternshipApplication::where('id', $internshipApplication->id)->update([
             'verification_date' => Carbon::now()->toDateString(),
-            'application_status' => 'Rejected'
+            'application_status' => 3
         ]);
 
         return redirect('/admin/internship-application/rejected');
@@ -77,7 +77,7 @@ class InternshipApplicationController extends Controller
 
     public function rejected()
     {
-        $status = "Rejected";
+        $status = 3;
         return view('dashboard.admin.internship_application.index', [
             'sidebar' => 'internship-applications',
             'sub_sidebar' => 'rejected',

@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\InternshipApplicationController as AdminInternshi
 use App\Http\Controllers\admin\StudentController as AdminStudentController;
 use App\Http\Controllers\admin\UserStudentController as AdminUserStudentController;
 use App\Http\Controllers\admin\InternshipProgramController as AdminInternshipProgramController;
+use App\Http\Controllers\admin\InternshipStudentController as AdminInternshipStudentController;
 use App\Http\Controllers\main\AuthController;
 use App\Http\Controllers\main\InternshipApplicationController as MainInternshipApplicationController;
 use App\Http\Controllers\ProfileController;
@@ -59,7 +60,9 @@ Route::prefix('admin')->group(function () {
     Route::resource('admin', AdminAdminController::class);
     Route::resource('supervisor', AdminSupervisorController::class);
     Route::resource('user-students', AdminUserStudentController::class);
+
     Route::resource('internship-programs', AdminInternshipProgramController::class);
+    Route::get('internship-programs/{internshipProgram}/supervisor', [AdminInternshipProgramController::class, 'supervisor']);
 
     Route::prefix('internship-application')->controller(AdminInternshipApplicationController::class)->group(function () {
         // Order Matters
@@ -70,6 +73,13 @@ Route::prefix('admin')->group(function () {
         Route::delete('/{internshipApplication}', 'destroy');
         Route::put('/approve/{internshipApplication}', 'approve');
         Route::put('/reject/{internshipApplication}', 'reject');
+    });
+
+    Route::controller(AdminInternshipStudentController::class)->group(function () {
+        Route::get('internship-students/{internshipProgram}', 'index');
+        Route::get('internship-students/{internshipProgram}/create', 'create');
+        Route::post('internship-students/{internshipProgram}', 'store');
+        Route::delete('internship-students/{internshipProgram}/{student}', 'destroy');
     });
 });
 
