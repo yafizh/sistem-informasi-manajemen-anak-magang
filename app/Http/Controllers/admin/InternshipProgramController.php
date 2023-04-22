@@ -67,6 +67,12 @@ class InternshipProgramController extends Controller
 
     public function show(InternshipProgram $internshipProgram)
     {
+        $start_date = new Carbon($internshipProgram->start_date);
+        $end_date = new Carbon($internshipProgram->end_date);
+
+        $internshipProgram->start_date = $start_date->day . ' ' . $start_date->locale('ID')->getTranslatedMonthName() . ' ' . $start_date->year;
+        $internshipProgram->end_date = $end_date->day . ' ' . $end_date->locale('ID')->getTranslatedMonthName() . ' ' . $end_date->year;
+
         return view('dashboard.admin.internship_program.show', [
             'internship_program' => $internshipProgram,
             'sidebar' => 'internship-programs',
