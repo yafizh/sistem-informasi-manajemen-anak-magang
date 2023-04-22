@@ -16,20 +16,20 @@ class InternshipApplicationController extends Controller
             'sidebar' => 'internship-applications',
             'sub_sidebar' => 'pending',
             'status' => $status,
-            'internship_applications' => InternshipApplication::where('status', $status)->orderBy('id', 'DESC')->get()
+            'internship_applications' => InternshipApplication::where('application_status', $status)->orderBy('id', 'DESC')->get()
         ]);
     }
 
     public function show(InternshipApplication $internshipApplication)
     {
 
-        if ($internshipApplication->status === 'Pending')
+        if ($internshipApplication->application_status === 'Pending')
             $sub_sidebar = "pending";
 
-        if ($internshipApplication->status === 'Approved')
+        if ($internshipApplication->application_status === 'Approved')
             $sub_sidebar = "approved";
 
-        if ($internshipApplication->status === 'Pending')
+        if ($internshipApplication->application_status === 'Pending')
             $sub_sidebar = "rejected";
 
         $start_date = new Carbon($internshipApplication->start_date);
@@ -47,7 +47,8 @@ class InternshipApplicationController extends Controller
     public function approve(InternshipApplication $internshipApplication)
     {
         InternshipApplication::where('id', $internshipApplication->id)->update([
-            'status' => 'Approved'
+            'verification_date' => Carbon::now()->toDateString(),
+            'application_status' => 'Approved'
         ]);
 
         return redirect('/admin/internship-application/approved');
@@ -60,14 +61,15 @@ class InternshipApplicationController extends Controller
             'sidebar' => 'internship-applications',
             'sub_sidebar' => 'approved',
             'status' => $status,
-            'internship_applications' => InternshipApplication::where('status', $status)->orderBy('id', 'DESC')->get()
+            'internship_applications' => InternshipApplication::where('application_status', $status)->orderBy('id', 'DESC')->get()
         ]);
     }
 
     public function reject(InternshipApplication $internshipApplication)
     {
         InternshipApplication::where('id', $internshipApplication->id)->update([
-            'status' => 'Rejected'
+            'verification_date' => Carbon::now()->toDateString(),
+            'application_status' => 'Rejected'
         ]);
 
         return redirect('/admin/internship-application/rejected');
@@ -80,7 +82,7 @@ class InternshipApplicationController extends Controller
             'sidebar' => 'internship-applications',
             'sub_sidebar' => 'rejected',
             'status' => $status,
-            'internship_applications' => InternshipApplication::where('status', $status)->orderBy('id', 'DESC')->get()
+            'internship_applications' => InternshipApplication::where('application_status', $status)->orderBy('id', 'DESC')->get()
         ]);
     }
 

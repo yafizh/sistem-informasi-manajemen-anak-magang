@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\SupervisorController as AdminSupervisorController
 use App\Http\Controllers\admin\InternshipApplicationController as AdminInternshipApplicationController;
 use App\Http\Controllers\admin\StudentController as AdminStudentController;
 use App\Http\Controllers\admin\UserStudentController as AdminUserStudentController;
+use App\Http\Controllers\admin\InternshipProgramController as AdminInternshipProgramController;
 use App\Http\Controllers\main\AuthController;
 use App\Http\Controllers\main\InternshipApplicationController as MainInternshipApplicationController;
 use App\Http\Controllers\ProfileController;
@@ -58,6 +59,7 @@ Route::prefix('admin')->group(function () {
     Route::resource('admin', AdminAdminController::class);
     Route::resource('supervisor', AdminSupervisorController::class);
     Route::resource('user-students', AdminUserStudentController::class);
+    Route::resource('internship-programs', AdminInternshipProgramController::class);
 
     Route::prefix('internship-application')->controller(AdminInternshipApplicationController::class)->group(function () {
         // Order Matters

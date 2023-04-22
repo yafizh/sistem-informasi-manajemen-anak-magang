@@ -107,37 +107,19 @@
                 </li>
             </ul>
         </li>
-        <li class="menu-item">
+        <li class="menu-item {{ $sidebar === 'internship-programs' ? 'active open' : '' }}"">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">Kegiatan Berjalan</div>
+                <div data-i18n="Account Settings">Kegiatan Magang</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="pages-account-settings-account.html" class="menu-link">
+                <li class="menu-item {{ ($sub_sidebar ?? '') === 'students1' ? 'active' : '' }}">
+                    <a href="/admin/internship-programs?student_status=1" class="menu-link">
                         <div data-i18n="Account">Siswa</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
-                        <div data-i18n="Notifications">Mahasiswa</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">Kegiatan Selesai</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="pages-account-settings-account.html" class="menu-link">
-                        <div data-i18n="Account">Siswa</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
+                <li class="menu-item {{ ($sub_sidebar ?? '') === 'students2' ? 'active' : '' }}">
+                    <a href="/admin/internship-programs?student_status=2" class="menu-link">
                         <div data-i18n="Notifications">Mahasiswa</div>
                     </a>
                 </li>
