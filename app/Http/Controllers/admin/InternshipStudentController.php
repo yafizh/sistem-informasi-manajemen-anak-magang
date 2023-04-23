@@ -46,12 +46,12 @@ class InternshipStudentController extends Controller
             'internship_program_id' => $internshipProgram->id
         ]);
 
-        return redirect('/admin/internship-students/2?student_status=' . $internshipProgram->student_status);
+        return redirect('/admin/internship-students/' . $internshipProgram->id . '?student_status=' . $internshipProgram->student_status);
     }
 
     public function destroy(InternshipProgram $internshipProgram, Student $student)
     {
         InternshipStudent::where('student_id', $student->id)->delete();
-        return redirect('/admin/internship-students/2?student_status=' . $internshipProgram->student_status);
+        return redirect('/admin/internship-students/' . $internshipProgram->id . '?student_status=' . $internshipProgram->student_status);
     }
 }
