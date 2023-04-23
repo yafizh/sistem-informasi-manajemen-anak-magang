@@ -35,7 +35,8 @@
                                 <input type="text" class="form-control" disabled id="name" />
                             </div>
                             <div class="mb-3 d-flex justify-content-between">
-                                <a href="/admin/supervisor" class="btn btn-secondary">Kembali</a>
+                                <a href="/admin/internship-students/{{ $internship_program->id }}?student_status={{ $internship_program->student_status }}"
+                                    class="btn btn-secondary">Kembali</a>
                                 <button type="submit" class="btn btn-primary">Tambah</button>
                             </div>
                         </form>
