@@ -10,19 +10,9 @@ use App\Http\Controllers\admin\InternshipProgramController as AdminInternshipPro
 use App\Http\Controllers\admin\InternshipStudentController as AdminInternshipStudentController;
 use App\Http\Controllers\main\AuthController;
 use App\Http\Controllers\main\InternshipApplicationController as MainInternshipApplicationController;
+use App\Http\Controllers\supervisor\InternshipProgramController as SupervisorInternshipProgramController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', function () {
     return view('main.index');
@@ -85,8 +75,23 @@ Route::prefix('admin')->group(function () {
 
 Route::prefix('supervisor')->group(function () {
     Route::get('/', function () {
-        return view('dashboard.supervisor.dashboard.index');
+        return view('dashboard.supervisor.dashboard.index', [
+            'sidebar' => 'dashboard'
+        ]);
     });
+
+    Route::prefix('internship-programs')
+        ->controller(SupervisorInternshipProgramController::class)
+        ->group(function () {
+            Route::get('/', 'index');
+            Route::get('/{internshipProgram}', 'show');
+            Route::get('/{internshipProgram}/students', 'student');
+            Route::get('/{internshipProgram}/presence-table', 'presenceTable');
+            Route::get('/{internshipProgram}/presence-histories', 'presenceHistory');
+            Route::post('/{internshipProgram}/presence-histories', 'storePresenceHistory');
+            Route::get('/{internshipProgram}/evaluations', 'evaliation');
+            Route::post('/{internshipProgram}/evaluations', 'storeEvaliation');
+        });
 });
 
 Route::prefix('student')->group(function () {
