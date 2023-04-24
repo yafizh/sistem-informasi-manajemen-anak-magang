@@ -28,7 +28,7 @@ class AuthController extends Controller
             elseif (Auth::user()->status === 'Supervisor')
                 return redirect()->intended('/supervisor');
             elseif (Auth::user()->status === 'Student')
-                return redirect()->intended('/student');
+                return redirect()->intended('/student/presences');
         }
 
         return back()->with('auth', 'Username atau Password Salah!');

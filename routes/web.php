@@ -14,7 +14,10 @@ use App\Http\Controllers\supervisor\InternshipProgramController as SupervisorInt
 use App\Http\Controllers\supervisor\StudentController as SupervisorStudentController;
 use App\Http\Controllers\supervisor\StudentPresenceController as SupervisorStudentPresenceController;
 use App\Http\Controllers\supervisor\StudentEvaluationController as SupervisorStudentEvaluationController;
+use App\Http\Controllers\student\StudentPresenceController as StudentStudentPresenceController;
+use App\Http\Controllers\student\StudentEvaluationController as StudentStudentEvaluationController;
 use App\Http\Controllers\ProfileController;
+use App\Models\StudentEvaluation;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -112,7 +115,9 @@ Route::prefix('supervisor')->middleware('auth')->group(function () {
 });
 
 Route::prefix('student')->middleware('auth')->group(function () {
-    Route::get('/', function () {
-        return view('dashboard.student.dashboard.index');
-    });
+    Route::get('/presences', [StudentStudentPresenceController::class, 'index']);
+    Route::get('/presences/{studentPresence}/edit', [StudentStudentPresenceController::class, 'edit']);
+    Route::put('/presences/{studentPresence}', [StudentStudentPresenceController::class, 'update']);
+    Route::get('/table-presences', [StudentStudentPresenceController::class, 'table']);
+    Route::get('/evalutaions', [StudentEvaluationPresenceController::class, 'index']);
 });

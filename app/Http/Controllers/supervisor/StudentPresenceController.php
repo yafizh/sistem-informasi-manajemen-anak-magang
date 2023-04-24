@@ -112,7 +112,6 @@ class StudentPresenceController extends Controller
                     'date' => $start_date,
                 ], [
                     'status' => null,
-                    'activity' => ''
                 ]);
             }
             $start_date->addDay();

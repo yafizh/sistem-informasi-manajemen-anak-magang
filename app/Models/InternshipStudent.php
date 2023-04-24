@@ -20,4 +20,9 @@ class InternshipStudent extends Model
     {
         return $this->hasOne(StudentEvaluation::class);
     }
+
+    public function presences()
+    {
+        return $this->hasMany(StudentPresence::class)->orderBy('date', 'DESC');
+    }
 }
