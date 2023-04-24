@@ -11,6 +11,9 @@ use App\Http\Controllers\admin\InternshipStudentController as AdminInternshipStu
 use App\Http\Controllers\main\AuthController;
 use App\Http\Controllers\main\InternshipApplicationController as MainInternshipApplicationController;
 use App\Http\Controllers\supervisor\InternshipProgramController as SupervisorInternshipProgramController;
+use App\Http\Controllers\supervisor\StudentController as SupervisorStudentController;
+use App\Http\Controllers\supervisor\StudentPresenceController as SupervisorStudentPresenceController;
+use App\Http\Controllers\supervisor\StudentEvaluationController as SupervisorStudentEvaluationController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -85,11 +88,27 @@ Route::prefix('supervisor')->group(function () {
         ->group(function () {
             Route::get('/', 'index');
             Route::get('/{internshipProgram}', 'show');
-            Route::get('/{internshipProgram}/students', 'student');
-            Route::get('/{internshipProgram}/presence-table', 'presenceTable');
-            Route::get('/{internshipProgram}/presence-histories', 'presenceHistory');
-            Route::post('/{internshipProgram}/presence-histories', 'storePresenceHistory');
-            Route::get('/{internshipProgram}/evaluations', 'evaliation');
+        });
+
+    Route::prefix('students')
+        ->controller(SupervisorStudentController::class)
+        ->group(function () {
+            Route::get('/{internshipProgram}', 'index');
+        });
+
+    Route::prefix('students/{internshipProgram}')
+        ->controller(SupervisorStudentPresenceController::class)
+        ->group(function () {
+            Route::get('/presences', 'index');
+            Route::get('/presence-table', 'table');
+            Route::get('/presences/create', 'create');
+            Route::post('/presences', 'store');
+        });
+
+    Route::prefix('students/evaluations')
+        ->controller(SupervisorStudentController::class)
+        ->group(function () {
+            Route::get('/{internshipProgram}/evaluations', 'evaluation');
             Route::post('/{internshipProgram}/evaluations', 'storeEvaliation');
         });
 });
