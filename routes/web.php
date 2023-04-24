@@ -119,5 +119,5 @@ Route::prefix('student')->middleware('auth')->group(function () {
     Route::get('/presences/{studentPresence}/edit', [StudentStudentPresenceController::class, 'edit']);
     Route::put('/presences/{studentPresence}', [StudentStudentPresenceController::class, 'update']);
     Route::get('/table-presences', [StudentStudentPresenceController::class, 'table']);
-    Route::get('/evalutaions', [StudentEvaluationPresenceController::class, 'index']);
+    Route::get('/evaluations', [StudentStudentEvaluationController::class, 'index']);
 });
