@@ -35,7 +35,7 @@
         </li>
         <li class="menu-item {{ $sidebar === 'students2' ? 'active' : '' }}">
             <a href="/admin/students?student_status=2" class="menu-link">
-                <i class="menu-icon tf-icons bx bxs-user-circle"></i>
+                <i class="menu-icon tf-icons bx bxs-graduation"></i>
                 <div data-i18n="Analytics">Mahasiswa</div>
             </a>
         </li>

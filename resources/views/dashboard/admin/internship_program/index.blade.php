@@ -9,7 +9,7 @@
     </style>
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="d-flex justify-content-between py-3 align-items-center">
-            <h4 class="fw-bold align-middle mb-0">Data Kegiatan Magang Siswa/Mahasiswa</h4>
+            <h4 class="fw-bold align-middle mb-0">Data Kegiatan Magang {{request()->get('student_status') == '1' ? 'Siswa' : 'Mahasiswa'}}</h4>
             <a href="/admin/internship-programs/create?student_status={{ request()->get('student_status') }}"
                 class="btn btn-primary">Tambah</a>
         </div>
@@ -50,7 +50,7 @@
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item"
                                                 href="/admin/internship-programs/{{ $internship_program->id }}?student_status={{ request()->get('student_status') }}">
-                                                <i class="bx bx-edit-alt me-2"></i> Lihat
+                                                <i class="bx bx-show me-2"></i> Lihat
                                             </a>
                                             <a class="dropdown-item"
                                                 href="/admin/internship-programs/{{ $internship_program->id }}/edit">

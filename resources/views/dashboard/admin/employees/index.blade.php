@@ -40,7 +40,7 @@
                                         </button>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="/admin/employees/{{ $employee->id }}">
-                                                <i class="bx bx-edit-alt me-2"></i> Lihat
+                                                <i class="bx bx-show me-2"></i> Lihat
                                             </a>
                                             <a class="dropdown-item" href="/admin/employees/{{ $employee->id }}/edit">
                                                 <i class="bx bx-edit-alt me-2"></i> Edit

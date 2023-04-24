@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold">Detail Siswa/Mahasiswa</h4>
+        <h4 class="fw-bold">Detail {{ request()->get('student_status') == 1 ? 'Siswa' : 'Mahasiswa' }}</h4>
 
         <div class="row">
             <div class="col-md-12">
@@ -23,14 +23,16 @@
                     <div class="card-body">
                         <div class="d-flex align-items-start align-items-sm-center gap-4">
                             <img src="{{ asset('storage/' . $student->photo) }}" alt="user-avatar" class="d-block rounded"
-                                height="100" width="100" id="uploadedAvatar" />
+                                height="100" width="100" id="uploadedAvatar" style="object-fit: cover;" />
                         </div>
                     </div>
                     <hr class="my-0" />
                     <div class="card-body">
                         <div class="row">
                             <div class="mb-3 col-md-6">
-                                <label class="form-label">NIM/NIS/NPM</label>
+                                <label class="form-label">
+                                    {{ request()->get('student_status') == 1 ? 'NIS/NISN' : 'NIM/NPM' }}
+                                </label>
                                 <input class="form-control" type="text" disabled value="{{ $student->id_number }}" />
                             </div>
                             <div class="mb-3 col-md-6">
@@ -60,7 +62,9 @@
                                 <input class="form-control" type="text" disabled value="{{ $student->sex }}" />
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label class="form-label">Nama Sekolah atau Nama Kampus</label>
+                                <label class="form-label">
+                                    Nama {{ request()->get('student_status') == 1 ? 'Sekolah' : 'Kampus' }}
+                                </label>
                                 <input class="form-control" type="text" disabled value="{{ $student->institution }}" />
                             </div>
                             <div class="mb-3 col-md-6">
@@ -72,7 +76,8 @@
                                 @endif
                             </div>
                             <div class="col-12 d-flex justify-content-end gap-2">
-                                <a href="/admin/students/{{ $student->id }}/edit" class="btn btn-warning">Edit</a>
+                                <a href="/admin/students/{{ $student->id }}/edit?student_status={{ request()->get('student_status') }}"
+                                    class="btn btn-warning">Edit</a>
                                 <form action="/admin/students/{{ $student->id }}" method="POST">
                                     @csrf
                                     @method('DELETE')

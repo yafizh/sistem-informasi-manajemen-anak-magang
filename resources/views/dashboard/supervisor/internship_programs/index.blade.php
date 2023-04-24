@@ -8,7 +8,7 @@
         }
     </style>
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold align-middle">Data Kegiatan Magang Siswa/Mahasiswa</h4>
+        <h4 class="fw-bold align-middle">Data Kegiatan Magang {{request()->get('student_status') == 1 ? 'Siswa' : 'Mahasiswa'}}</h4>
 
         <div class="card">
             <div class="table-responsive text-nowrap" style="overflow: hidden!important;">
@@ -44,7 +44,7 @@
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item"
                                                 href="/supervisor/internship-programs/{{ $internship_program->id }}?student_status={{ request()->get('student_status') }}">
-                                                <i class="bx bx-edit-alt me-2"></i> Lihat
+                                                <i class="bx bx-show me-2"></i> Lihat
                                             </a>
                                         </div>
                                     </div>

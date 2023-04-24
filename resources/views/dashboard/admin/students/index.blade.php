@@ -9,7 +9,7 @@
     </style>
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="d-flex justify-content-between py-3 align-items-center">
-            <h4 class="fw-bold align-middle mb-0">Data Siswa/Mahasiswa</h4>
+            <h4 class="fw-bold align-middle mb-0">Data {{request()->get('student_status') == '1' ? 'Siswa' : 'Mahasiswa'}}</h4>
         </div>
 
         <div class="card">
@@ -38,10 +38,10 @@
                                             <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="/admin/students/{{ $student->id }}">
-                                                <i class="bx bx-edit-alt me-2"></i> Lihat
+                                            <a class="dropdown-item" href="/admin/students/{{ $student->id }}?student_status={{request()->get('student_status')}}">
+                                                <i class="bx bx-show me-2"></i> Lihat
                                             </a>
-                                            <a class="dropdown-item" href="/admin/students/{{ $student->id }}/edit">
+                                            <a class="dropdown-item" href="/admin/students/{{ $student->id }}/edit?student_status={{request()->get('student_status')}}">
                                                 <i class="bx bx-edit-alt me-2"></i> Edit
                                             </a>
                                             <form action="/admin/students/{{ $student->id }}" method="POST">

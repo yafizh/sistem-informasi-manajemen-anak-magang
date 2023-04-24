@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold">Edit Data Siswa/Mahasiswa</h4>
+        <h4 class="fw-bold">Edit Data {{request()->get('student_status') == 1 ? 'Siswa' : 'Mahasiswa'}}</h4>
 
         <form action="/admin/students/{{ $student->id }}" method="POST" enctype="multipart/form-data">
             @csrf

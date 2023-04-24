@@ -15,8 +15,11 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="javascript:void(0);">
-                            <i class="bx bx-link-alt me-1"></i>
-                            Siswa/Mahasiswa
+                            @if (request()->get('student_status') == 1)
+                                <i class="bx bxs-user-circle me-1"></i> Siswa
+                            @else
+                                <i class="bx bxs-graduation me-1"></i> Mahasiswa
+                            @endif
                         </a>
                     </li>
                     <li class="nav-item">
@@ -48,7 +51,11 @@
                                 </div>
                                 <div class="mb-3 col-md-8">
                                     <div class="mb-3">
-                                        <label class="form-label">NIS/NPM</label>
+                                        @if (request()->get('student_status') == 1)
+                                            <label class="form-label">NIS/NISN</label>
+                                        @else
+                                            <label class="form-label">NIM/NPM</label>
+                                        @endif
                                         <input class="form-control" type="text" disabled
                                             value="{{ $student->id_number }}" />
                                     </div>

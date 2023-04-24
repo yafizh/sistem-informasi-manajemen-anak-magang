@@ -25,7 +25,7 @@ class StudentController extends Controller
     public function show(Student $student)
     {
         return view('dashboard.admin.students.show', [
-            'sidebar' => 'students',
+            'sidebar' => 'students' . request()->get('student_status'),
             'student' => $student
         ]);
     }
@@ -33,7 +33,7 @@ class StudentController extends Controller
     public function edit(Student $student)
     {
         return view('dashboard.admin.students.edit', [
-            'sidebar' => 'students',
+            'sidebar' => 'students' . request()->get('student_status'),
             'student' => $student
         ]);
     }

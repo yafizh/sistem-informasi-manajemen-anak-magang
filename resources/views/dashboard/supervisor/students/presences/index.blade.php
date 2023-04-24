@@ -16,8 +16,11 @@
                     <li class="nav-item">
                         <a class="nav-link"
                             href="/supervisor/students/{{ $internship_program->id }}?student_status={{ request()->get('student_status') }}">
-                            <i class="bx bx-link-alt me-1"></i>
-                            Siswa/Mahasiswa
+                            @if (request()->get('student_status') == 1)
+                                <i class="bx bxs-user-circle me-1"></i> Siswa
+                            @else
+                                <i class="bx bxs-graduation me-1"></i> Mahasiswa
+                            @endif
                         </a>
                     </li>
                     <li class="nav-item">
@@ -50,7 +53,11 @@
                                     <tr>
                                         <th class="fit text-center">No</th>
                                         <th class="text-center">Tanggal</th>
-                                        <th class="text-center">NIS/NPM</th>
+                                        @if (request()->get('student_status') == 1)
+                                            <th class="text-center">NIS/NISN</th>
+                                        @else
+                                            <th class="text-center">NIM/NPM</th>
+                                        @endif
                                         <th class="text-center">Nama</th>
                                         <th class="text-center">Status</th>
                                         <th class="fit">Aksi</th>

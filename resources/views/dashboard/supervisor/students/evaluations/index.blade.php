@@ -16,8 +16,11 @@
                     <li class="nav-item">
                         <a class="nav-link"
                             href="/supervisor/students/{{ $internship_program->id }}?student_status={{ request()->get('student_status') }}">
-                            <i class="bx bx-link-alt me-1"></i>
-                            Siswa/Mahasiswa
+                            @if (request()->get('student_status') == 1)
+                                <i class="bx bxs-user-circle me-1"></i> Siswa
+                            @else
+                                <i class="bx bxs-graduation me-1"></i> Mahasiswa
+                            @endif
                         </a>
                     </li>
                     <li class="nav-item">

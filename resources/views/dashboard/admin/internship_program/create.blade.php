@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold">Tambah Data Kegiatan Magang</h4>
+        <h4 class="fw-bold text-center">Tambah Data Kegiatan Magang</h4>
 
         <div class="row justify-content-center">
             <div class="col-12 col-md-6">
