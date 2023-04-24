@@ -12,8 +12,20 @@ class StudentEvaluationController extends Controller
 {
     public function index(InternshipProgram $internshipProgram)
     {
+        $average = array_sum([
+            $internshipProgram->internshipStudent->evaluation->attitude ?? 0,
+            $internshipProgram->internshipStudent->evaluation->discipline ?? 0,
+            $internshipProgram->internshipStudent->evaluation->diligence ?? 0,
+            $internshipProgram->internshipStudent->evaluation->independent_work ?? 0,
+            $internshipProgram->internshipStudent->evaluation->collaboration ?? 0,
+            $internshipProgram->internshipStudent->evaluation->accuracy ?? 0,
+            $internshipProgram->internshipStudent->evaluation->communication ?? 0,
+            $internshipProgram->internshipStudent->evaluation->creativity ?? 0,
+        ]) / 8;
+
         return view('dashboard.supervisor.students.evaluations.index', [
             'internship_program' => $internshipProgram,
+            'average' => $average,
             'sidebar' => 'internship-programs-' . $internshipProgram->student_status,
         ]);
     }

@@ -60,7 +60,7 @@
                                         value="{{ $internship_student->evaluation->collaboration ?? 0 }}" />
                                 </div>
                                 <div class="col-12 col-md-6 mb-3">
-                                    <label for="accuracy" class="form-label">Ketepatan</label>
+                                    <label for="accuracy" class="form-label">Ketelitian</label>
                                     <input type="number" min="0" max="100" class="form-control text-center" name="accuracy" id="accuracy"
                                         required value="{{ $internship_student->evaluation->accuracy ?? 0 }}" />
                                 </div>

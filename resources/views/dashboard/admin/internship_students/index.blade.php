@@ -10,18 +10,18 @@
                     <li class="nav-item">
                         <a class="nav-link"
                             href="/admin/internship-programs/{{ $internship_program->id }}?student_status={{ request()->get('student_status') }}">
-                            <i class="bx bx-user me-1"></i> Periode Magang</a>
+                            <i class="bx bxs-calendar-week me-1"></i> Periode Magang
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
                             href="/admin/internship-programs/{{ $internship_program->id }}/supervisor?student_status={{ request()->get('student_status') }}">
-                            <i class="bx bx-bell me-1"></i> Pembimbing
+                            <i class="bx bxs-user-badge me-1"></i> Pembimbing
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="javascript:void(0);">
-                            <i class="bx bx-link-alt me-1"></i>
-                            Siswa/Mahasiswa
+                            <i class="bx bxs-user-circle me-1"></i> Siswa/Mahasiswa
                         </a>
                     </li>
                 </ul>

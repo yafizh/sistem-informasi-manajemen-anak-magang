@@ -10,17 +10,18 @@
                     <li class="nav-item">
                         <a class="nav-link"
                             href="/admin/internship-programs/{{ $internship_program->id }}?student_status={{ request()->get('student_status') }}">
-                            <i class="bx bx-user me-1"></i> Periode Magang</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="javascript:void(0);">
-                            <i class="bx bx-bell me-1"></i> Pembimbing
+                            <i class="bx bxs-calendar-week me-1"></i> Periode Magang
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/internship-students/{{ $internship_program->id }}?student_status={{ request()->get('student_status') }}">
-                            <i class="bx bx-link-alt me-1"></i>
-                            Siswa/Mahasiswa
+                        <a class="nav-link active" href="javascript:void(0);">
+                            <i class="bx bxs-user-badge me-1"></i> Pembimbing
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                            href="/admin/internship-students/{{ $internship_program->id }}?student_status={{ request()->get('student_status') }}">
+                            <i class="bx bxs-user-circle me-1"></i> Siswa/Mahasiswa
                         </a>
                     </li>
                 </ul>
@@ -28,7 +29,8 @@
                     <div class="card-body">
                         <div class="d-flex align-items-start align-items-sm-center gap-4">
                             <img src="{{ asset('storage/' . $internship_program->supervisor->photo) }}" alt="user-avatar"
-                                class="d-block rounded" style="object-fit: cover;" height="100" width="100" id="uploadedAvatar" />
+                                class="d-block rounded" style="object-fit: cover;" height="100" width="100"
+                                id="uploadedAvatar" />
                         </div>
                     </div>
                     <hr class="my-0" />

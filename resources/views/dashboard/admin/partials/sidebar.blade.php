@@ -23,19 +23,19 @@
         </li>
         <li class="menu-item {{ $sidebar === 'employees' ? 'active' : '' }}">
             <a href="/admin/employees" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <i class="menu-icon tf-icons bx bxs-user-badge"></i>
                 <div data-i18n="Analytics">Pegawai</div>
             </a>
         </li>
         <li class="menu-item {{ $sidebar === 'students1' ? 'active' : '' }}">
             <a href="/admin/students?student_status=1" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <i class="menu-icon tf-icons bx bxs-user-circle"></i>
                 <div data-i18n="Analytics">Siswa</div>
             </a>
         </li>
         <li class="menu-item {{ $sidebar === 'students2' ? 'active' : '' }}">
             <a href="/admin/students?student_status=2" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <i class="menu-icon tf-icons bx bxs-user-circle"></i>
                 <div data-i18n="Analytics">Mahasiswa</div>
             </a>
         </li>
@@ -45,7 +45,7 @@
         </li>
         <li class="menu-item {{ $sidebar === 'user-employees' ? 'active open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                <i class="menu-icon tf-icons bx bxs-user-badge"></i>
                 <div data-i18n="Account Settings">Pegawai</div>
             </a>
             <ul class="menu-sub">
@@ -63,7 +63,7 @@
         </li>
         <li class="menu-item {{ $sidebar === 'user-students' ? 'active open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                <i class="menu-icon tf-icons bx bxs-user-circle"></i>
                 <div data-i18n="Account Settings">Magang</div>
             </a>
             <ul class="menu-sub">
@@ -86,7 +86,7 @@
         </li>
         <li class="menu-item {{ $sidebar === 'internship-applications' ? 'active open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                <i class="menu-icon tf-icons bx bxs-book"></i>
                 <div data-i18n="Account Settings">Pendaftaran</div>
             </a>
             <ul class="menu-sub">
@@ -109,7 +109,7 @@
         </li>
         <li class="menu-item {{ $sidebar === 'internship-programs' ? 'active open' : '' }}"">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                <i class="menu-icon tf-icons bx bxs-book-bookmark"></i>
                 <div data-i18n="Account Settings">Kegiatan Magang</div>
             </a>
             <ul class="menu-sub">
@@ -129,7 +129,7 @@
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Laporan</span></li>
         <li class="menu-item">
             <a href="javascript:void(0)" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-box"></i>
+                <i class="menu-icon tf-icons bx bxs-file-pdf"></i>
                 <div data-i18n="User interface">Laporan</div>
             </a>
             <ul class="menu-sub">

@@ -10,7 +10,7 @@
                     <li class="nav-item">
                         <a class="nav-link"
                             href="/supervisor/internship-programs/{{ $internship_program->id }}?student_status={{ request()->get('student_status') }}">
-                            <i class="bx bx-user me-1"></i> Periode Magang
+                            <i class="bx bx-calendar me-1"></i> Periode Magang
                         </a>
                     </li>
                     <li class="nav-item">
@@ -23,21 +23,18 @@
                     <li class="nav-item">
                         <a class="nav-link"
                             href="/supervisor/students/{{ $internship_program->id }}/presences?student_status={{ request()->get('student_status') }}">
-                            <i class="bx bx-link-alt me-1"></i>
-                            Riwayat Presensi
+                            <i class="bx bx-spreadsheet me-1"></i> Riwayat Presensi
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="javascript:void(0);">
-                            <i class="bx bx-link-alt me-1"></i>
-                            Tabel Presensi
+                            <i class="bx bx-table me-1"></i> Tabel Presensi
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
                             href="/supervisor/students/{{ $internship_program->id }}/evaluations?student_status={{ request()->get('student_status') }}">
-                            <i class="bx bx-link-alt me-1"></i>
-                            Penilaian
+                            <i class="bx bx-id-card me-1"></i> Penilaian
                         </a>
                     </li>
                 </ul>
