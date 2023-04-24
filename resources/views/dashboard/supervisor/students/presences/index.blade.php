@@ -72,9 +72,9 @@
                                                 <td class="text-center">
                                                     @if ($student_presence->status == 1)
                                                         <span class="badge bg-label-success me-1">Hadir</span>
-                                                    @elseif ($student_presence->internship_status == 2)
+                                                    @elseif ($student_presence->status == 2)
                                                         <span class="badge bg-label-warning me-1">Sakit</span>
-                                                    @elseif ($student_presence->internship_status == 3)
+                                                    @elseif ($student_presence->status == 3)
                                                         <span class="badge bg-label-info me-1">Izin</span>
                                                     @else
                                                         @if ($student_presence->date < Date('Y-m-d'))
@@ -92,9 +92,19 @@
                                                         </button>
                                                         <div class="dropdown-menu">
                                                             <a class="dropdown-item"
-                                                                href="/supervisor/internship-programs/{{ $internship_program->id }}?student_status={{ request()->get('student_status') }}">
-                                                                <i class="bx bx-edit-alt me-2"></i> Lihat
+                                                                href="/supervisor/students/{{ $internship_program->id }}/presences/{{ $student_presence->id }}/edit">
+                                                                <i class="bx bx-edit-alt me-2"></i> Edit
                                                             </a>
+                                                            <form
+                                                                action="/supervisor/students/{{ $internship_program->id }}/presences/{{ $student_presence->id }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="dropdown-item"
+                                                                    onclick="return confirm('Are you sure?')">
+                                                                    <i class="bx bx-trash me-2"></i> Hapus
+                                                                </button>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </td>

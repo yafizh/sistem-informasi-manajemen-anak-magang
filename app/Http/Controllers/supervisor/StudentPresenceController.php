@@ -110,7 +110,7 @@ class StudentPresenceController extends Controller
                 StudentPresence::updateOrCreate([
                     'internship_student_id' => $internshipStudent->id,
                     'date' => $start_date,
-                ],[
+                ], [
                     'status' => null,
                     'activity' => ''
                 ]);
@@ -118,6 +118,30 @@ class StudentPresenceController extends Controller
             $start_date->addDay();
         }
 
+        return redirect('/supervisor/students/' . $internshipProgram->id . '/presences?student_status=' . $internshipProgram['student_status']);
+    }
+
+    public function edit(InternshipProgram $internshipProgram, StudentPresence $studentPresence)
+    {
+        $date = new Carbon($studentPresence->date);
+        $studentPresence->date = $date->day . " " . $date->locale('ID')->getTranslatedMonthName() . " " . $date->year;
+
+        return view('dashboard.supervisor.students.presences.edit', [
+            'internship_program' => $internshipProgram,
+            'student_presence' => $studentPresence,
+            'sidebar' => 'internship-programs-' . $internshipProgram->student_status,
+        ]);
+    }
+
+    public function update(Request $request, InternshipProgram $internshipProgram, StudentPresence $studentPresence)
+    {
+        StudentPresence::where('id', $studentPresence->id)->update(['status' => $request->get('status')]);
+        return redirect('/supervisor/students/' . $internshipProgram->id . '/presences?student_status=' . $internshipProgram['student_status']);
+    }
+
+    public function destroy(InternshipProgram $internshipProgram, StudentPresence $studentPresence)
+    {
+        StudentPresence::destroy('id', $studentPresence->id);
         return redirect('/supervisor/students/' . $internshipProgram->id . '/presences?student_status=' . $internshipProgram['student_status']);
     }
 }
