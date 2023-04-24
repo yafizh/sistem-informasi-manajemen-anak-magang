@@ -22,7 +22,7 @@ Route::get('/', function () {
 });
 
 Route::controller(AuthController::class)->group(function () {
-    Route::get('/login', 'index');
+    Route::get('/login', 'index')->name('login');
     Route::post('/login', 'login');
     Route::get('/logout', 'logout');
 });
@@ -37,12 +37,12 @@ Route::get('/internship-application', function () {
     return view('main.internship_application');
 });
 
-Route::controller(ProfileController::class)->group(function () {
+Route::controller(ProfileController::class)->middleware('auth')->group(function () {
     Route::get('/change-password', 'changePassword');
     Route::put('/change-password', 'updatePassword');
 });
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('dashboard.admin.dashboard.index', [
             'sidebar' => 'dashboard'
@@ -76,7 +76,7 @@ Route::prefix('admin')->group(function () {
     });
 });
 
-Route::prefix('supervisor')->group(function () {
+Route::prefix('supervisor')->middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('dashboard.supervisor.dashboard.index', [
             'sidebar' => 'dashboard'
@@ -111,7 +111,7 @@ Route::prefix('supervisor')->group(function () {
         });
 });
 
-Route::prefix('student')->group(function () {
+Route::prefix('student')->middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('dashboard.student.dashboard.index');
     });
