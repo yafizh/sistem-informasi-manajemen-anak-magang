@@ -14,28 +14,28 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
-                            href="/supervisor/internship-programs/{{ $internship_program->id }}/students?student_status={{ request()->get('student_status') }}">
+                            href="/supervisor/students/{{ $internship_program->id }}?student_status={{ request()->get('student_status') }}">
                             <i class="bx bx-link-alt me-1"></i>
                             Siswa/Mahasiswa
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
-                            href="/supervisor/internship-programs/{{ $internship_program->id }}/presence-table?student_status={{ request()->get('student_status') }}">
-                            <i class="bx bx-link-alt me-1"></i>
-                            Tabel Presensi
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"
-                            href="/supervisor/internship-programs/{{ $internship_program->id }}/presence-histories?student_status={{ request()->get('student_status') }}">
+                            href="/supervisor/students/{{ $internship_program->id }}/presences?student_status={{ request()->get('student_status') }}">
                             <i class="bx bx-link-alt me-1"></i>
                             Riwayat Presensi
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
-                            href="/supervisor/internship-programs/{{ $internship_program->id }}/evaluations?student_status={{ request()->get('student_status') }}">
+                            href="/supervisor/students/{{ $internship_program->id }}/presence-table?student_status={{ request()->get('student_status') }}">
+                            <i class="bx bx-link-alt me-1"></i>
+                            Tabel Presensi
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                            href="/supervisor/students/{{ $internship_program->id }}/evaluations?student_status={{ request()->get('student_status') }}">
                             <i class="bx bx-link-alt me-1"></i>
                             Penilaian
                         </a>

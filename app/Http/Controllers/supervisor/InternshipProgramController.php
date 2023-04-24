@@ -4,6 +4,7 @@ namespace App\Http\Controllers\supervisor;
 
 use App\Http\Controllers\Controller;
 use App\Models\InternshipProgram;
+use App\Models\StudentPresence;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -44,43 +45,6 @@ class InternshipProgramController extends Controller
 
         return view('dashboard.supervisor.internship_programs.show', [
             'internship_program' => $internshipProgram,
-            'sidebar' => 'internship-programs-' . request()->get('student_status'),
-        ]);
-    }
-
-    public function student(InternshipProgram $internshipProgram)
-    {
-        return view('dashboard.supervisor.internship_programs.student', [
-            'internship_program' => $internshipProgram,
-            'sidebar' => 'internship-programs-' . request()->get('student_status'),
-        ]);
-    }
-
-    public function presenceTable(InternshipProgram $internshipProgram)
-    {
-        $start_date = new Carbon($internshipProgram->start_date);
-        $end_date = new Carbon($internshipProgram->end_date);
-
-        $filters = [
-            'month' => [],
-            'year' => $start_date->year
-        ];
-
-        for ($i = $start_date->month; $i <= $end_date->month; $i++) {
-            $filters['month'][] = [
-                'name' => Carbon::create()->day(1)->month($i)->locale('ID')->getTranslatedMonthName(),
-                'value' => $i
-            ];
-        }
-
-        if(request()->get('month')){
-            $presence_table = [];
-        }
-
-        return view('dashboard.supervisor.internship_programs.presence_table', [
-            'internship_program' => $internshipProgram,
-            'filters' => $filters,
-            'choosed_month' => request()->get('month'),
             'sidebar' => 'internship-programs-' . request()->get('student_status'),
         ]);
     }

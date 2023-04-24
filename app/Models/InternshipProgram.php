@@ -20,4 +20,14 @@ class InternshipProgram extends Model
     {
         return $this->belongsToMany(Student::class, 'internship_students', 'internship_program_id', 'student_id');
     }
+
+    public function internshipStudents()
+    {
+        return $this->hasMany(InternshipStudent::class);
+    }
+
+    public function studentPresences()
+    {
+        return $this->hasManyThrough(StudentPresence::class, InternshipStudent::class)->orderBy('date', 'DESC');
+    }
 }
