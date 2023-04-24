@@ -45,7 +45,7 @@ class StudentSeeder extends Seeder
                 'birth_date' => '2000-01-01',
                 'sex' => 'Laki - Laki',
                 'email' => $email,
-                'phone_number' => '123123321',
+                'phone_number' => rand(10000000, 99999999),
                 'institution' => $institution,
                 'photo' => '',
                 'student_status' => $student_status,

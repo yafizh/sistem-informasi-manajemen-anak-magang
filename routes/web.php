@@ -102,11 +102,12 @@ Route::prefix('supervisor')->group(function () {
             Route::resource('/presences', SupervisorStudentPresenceController::class)->parameters(['presences' => 'studentPresence']);
         });
 
-    Route::prefix('students/evaluations')
-        ->controller(SupervisorStudentController::class)
+    Route::prefix('students')
+        ->controller(SupervisorStudentEvaluationController::class)
         ->group(function () {
-            Route::get('/{internshipProgram}/evaluations', 'evaluation');
-            Route::post('/{internshipProgram}/evaluations', 'storeEvaliation');
+            Route::get('/{internshipProgram}/evaluations', 'index');
+            Route::get('/{internshipProgram}/evaluations/{internshipStudent}', 'create');
+            Route::post('/{internshipProgram}/evaluations/{internshipStudent}', 'store');
         });
 });
 

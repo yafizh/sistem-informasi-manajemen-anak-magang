@@ -15,4 +15,9 @@ class InternshipStudent extends Model
     {
         return $this->belongsTo(Student::class);
     }
+
+    public function evaluation()
+    {
+        return $this->hasOne(StudentEvaluation::class);
+    }
 }
