@@ -25,4 +25,9 @@ class InternshipStudent extends Model
     {
         return $this->hasMany(StudentPresence::class)->orderBy('date', 'DESC');
     }
+
+    public function internshipProgram()
+    {
+        return $this->belongsTo(internshipProgram::class);
+    }
 }

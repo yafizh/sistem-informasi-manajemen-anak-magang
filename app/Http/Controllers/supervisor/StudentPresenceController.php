@@ -25,25 +25,33 @@ class StudentPresenceController extends Controller
 
     public function table(InternshipProgram $internshipProgram)
     {
-        $start_date = new Carbon($internshipProgram->start_date);
-        $end_date = new Carbon($internshipProgram->end_date);
-
         $filters = [
             'month' => [],
             'year' => []
         ];
 
-        for ($i = $start_date->month; $i <= $end_date->month; $i++) {
+        $start_date = new Carbon($internshipProgram->start_date);
+        $end_date = new Carbon($internshipProgram->end_date);
+        $end_date->addMonth();
+        while (!$start_date->eq($end_date)) {
             $filters['month'][] = [
-                'name' => Carbon::create()->day(1)->month($i)->locale('ID')->getTranslatedMonthName(),
-                'value' => $i
+                'name' => $start_date->locale('ID')->getTranslatedMonthName(),
+                'value' => $start_date->month
             ];
+
+            $start_date->addMonth();
         }
-        for ($i = $start_date->year; $i <= $end_date->year; $i++) {
+
+        $start_date = new Carbon($internshipProgram->start_date);
+        $end_date = new Carbon($internshipProgram->end_date);
+        $end_date->addYear();
+        while (!$start_date->eq($end_date)) {
             $filters['year'][] = [
-                'name' => $i,
-                'value' => $i
+                'name' => $start_date->year,
+                'value' => $start_date->year
             ];
+
+            $start_date->addYear();
         }
 
         if (request()->get('month') && request()->get('year')) {
