@@ -12,24 +12,48 @@
             <!-- User -->
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <div class="avatar avatar-online">
-                        <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
-                    </div>
+                    @if (auth()->user()->employee)
+                        <div class="avatar">
+                            <img src="{{ asset('storage/' . auth()->user()->employee->photo) }}" alt
+                                class="w-px-40 h-auto rounded-circle" />
+                        </div>
+                    @elseif (auth()->user()->student)
+                        <div class="avatar">
+                            <img src="{{ asset('storage/' . auth()->user()->student->photo) }}" alt
+                                class="w-px-40 h-auto rounded-circle" />
+                        </div>
+                    @else
+                        Admin
+                    @endif
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li>
                         <a class="dropdown-item" href="#">
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
-                                    <div class="avatar avatar-online">
-                                        <img src="../assets/img/avatars/1.png" alt
-                                            class="w-px-40 h-auto rounded-circle" />
+                                    @if (auth()->user()->employee)
+                                        <div class="avatar">
+                                            <img src="{{ asset('storage/' . auth()->user()->employee->photo) }}" alt
+                                                class="w-px-40 h-auto rounded-circle" />
+                                        </div>
+                                    @elseif (auth()->user()->student)
+                                        <div class="avatar">
+                                            <img src="{{ asset('storage/' . auth()->user()->student->photo) }}" alt
+                                                class="w-px-40 h-auto rounded-circle" />
+                                        </div>
+                                    @endif
+                                </div>
+                                @if (auth()->user()->employee)
+                                    <div class="flex-grow-1">
+                                        <span class="fw-semibold d-block">{{auth()->user()->employee->name}}</span>
+                                        <small class="text-muted">{{auth()->user()->status}}</small>
                                     </div>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <span class="fw-semibold d-block">John Doe</span>
-                                    <small class="text-muted">Admin</small>
-                                </div>
+                                @elseif (auth()->user()->student)
+                                    <div class="flex-grow-1">
+                                        <span class="fw-semibold d-block">{{auth()->user()->student->name}}</span>
+                                        <small class="text-muted">{{auth()->user()->status}}</small>
+                                    </div>
+                                @endif
                             </div>
                         </a>
                     </li>
@@ -38,14 +62,14 @@
                     </li>
                     @if (auth()->user()->employee || auth()->user()->student)
                         <li>
-                            <a class="dropdown-item" href="/{{request()->segment(1)}}/profile">
+                            <a class="dropdown-item" href="/{{ request()->segment(1) }}/profile">
                                 <i class="bx bx-user me-2"></i>
                                 <span class="align-middle">Profil</span>
                             </a>
                         </li>
                     @endif
                     <li>
-                        <a class="dropdown-item" href="/{{request()->segment(1)}}/change-password">
+                        <a class="dropdown-item" href="/{{ request()->segment(1) }}/change-password">
                             <i class="bx bx-cog me-2"></i>
                             <span class="align-middle">Ganti Password</span>
                         </a>
