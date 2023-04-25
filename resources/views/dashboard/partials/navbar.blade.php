@@ -36,12 +36,14 @@
                     <li>
                         <div class="dropdown-divider"></div>
                     </li>
-                    <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="bx bx-user me-2"></i>
-                            <span class="align-middle">Profil</span>
-                        </a>
-                    </li>
+                    @if (auth()->user()->employee || auth()->user()->student)
+                        <li>
+                            <a class="dropdown-item" href="/profile">
+                                <i class="bx bx-user me-2"></i>
+                                <span class="align-middle">Profil</span>
+                            </a>
+                        </li>
+                    @endif
                     <li>
                         <a class="dropdown-item" href="/change-password">
                             <i class="bx bx-cog me-2"></i>

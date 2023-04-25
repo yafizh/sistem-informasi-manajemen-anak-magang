@@ -46,22 +46,24 @@
                             <div class="col-12">
                                 <div class="mb-3 d-flex justify-content-between">
                                     <a href="/admin/internship-application" class="btn btn-secondary">Kembali</a>
-                                    <div class="d-flex gap-3">
-                                        <form
-                                            action="/admin/internship-application/reject/{{ $internship_application->id }}"
-                                            method="POST">
-                                            @csrf
-                                            @method('PUT')
-                                            <button type="submit" class="btn btn-danger">Tolak</button>
-                                        </form>
-                                        <form
-                                            action="/admin/internship-application/approve/{{ $internship_application->id }}"
-                                            method="POST">
-                                            @csrf
-                                            @method('PUT')
-                                            <button type="submit" class="btn btn-success">Setujui</button>
-                                        </form>
-                                    </div>
+                                    @if ($internship_application->application_status == 1)
+                                        <div class="d-flex gap-3">
+                                            <form
+                                                action="/admin/internship-application/reject/{{ $internship_application->id }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <button type="submit" class="btn btn-danger">Tolak</button>
+                                            </form>
+                                            <form
+                                                action="/admin/internship-application/approve/{{ $internship_application->id }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <button type="submit" class="btn btn-success">Setujui</button>
+                                            </form>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>

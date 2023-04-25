@@ -33,7 +33,7 @@ class StudentPresenceController extends Controller
         $start_date = new Carbon($internshipProgram->start_date);
         $end_date = new Carbon($internshipProgram->end_date);
         $end_date->addMonth();
-        while (!$start_date->eq($end_date)) {
+        while ($start_date->month != $end_date->month) {
             $filters['month'][] = [
                 'name' => $start_date->locale('ID')->getTranslatedMonthName(),
                 'value' => $start_date->month
@@ -45,7 +45,7 @@ class StudentPresenceController extends Controller
         $start_date = new Carbon($internshipProgram->start_date);
         $end_date = new Carbon($internshipProgram->end_date);
         $end_date->addYear();
-        while (!$start_date->eq($end_date)) {
+        while ($start_date->year != $end_date->year) {
             $filters['year'][] = [
                 'name' => $start_date->year,
                 'value' => $start_date->year
@@ -53,6 +53,7 @@ class StudentPresenceController extends Controller
 
             $start_date->addYear();
         }
+
 
         if (request()->get('month') && request()->get('year')) {
             $presence_table = [];

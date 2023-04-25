@@ -35,7 +35,7 @@
                                         </button>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item"
-                                                href="/change-password?user_id={{ $student->id }}">
+                                                href="/change-password?user_id={{ $student->user->id }}">
                                                 <i class="bx bx-edit-alt me-2"></i> Ganti Password
                                             </a>
                                         </div>

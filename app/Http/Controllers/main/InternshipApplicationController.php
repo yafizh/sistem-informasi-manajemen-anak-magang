@@ -29,13 +29,7 @@ class InternshipApplicationController extends Controller
         ]);
 
         $validatedData['application_date'] = Carbon::now();
-        $validatedData['internship_application_id'] = InternshipApplication::create($validatedData)->id;
-        $validatedData['user_id'] = User::create([
-            'username' => $validatedData['id_number'],
-            'password' => bcrypt($validatedData['id_number']),
-            'status' => 'Student'
-        ])->id;
-        Student::create($validatedData);
+        InternshipApplication::create($validatedData)->id;
 
         return redirect('/internship-application-success');
     }

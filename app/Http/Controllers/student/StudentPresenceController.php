@@ -60,7 +60,7 @@ class StudentPresenceController extends Controller
         $table = [];
 
         $end_date->addMonth();
-        while (!$start_date->eq($end_date)) {
+        while ($start_date->month != $end_date->month) {
             $presences = [];
             for ($i = 1; $i <= 31; $i++) {
                 $presence = StudentPresence::where('internship_student_id', Auth::user()->student->internshipStudent->id)

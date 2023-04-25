@@ -4,6 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\InternshipApplication;
+use App\Models\Student;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -23,7 +25,7 @@ class InternshipApplicationController extends Controller
     public function show(InternshipApplication $internshipApplication)
     {
 
-        if ($internshipApplication->application_status == '1')
+        if ($internshipApplication->application_status == 1)
             $sub_sidebar = "pending";
 
         if ($internshipApplication->application_status == 2)
@@ -49,6 +51,21 @@ class InternshipApplicationController extends Controller
         InternshipApplication::where('id', $internshipApplication->id)->update([
             'verification_date' => Carbon::now()->toDateString(),
             'application_status' => 2
+        ]);
+
+        $user_id = User::create([
+            'username' => $internshipApplication->id_number,
+            'password' => $internshipApplication->id_number,
+            'status' => 'Student'
+        ])->id;
+        Student::create([
+            'user_id' => $user_id,
+            'internship_application_id' => $internshipApplication->id,
+            'id_number' => $internshipApplication->id_number,
+            'name' => $internshipApplication->name,
+            'email' => $internshipApplication->email,
+            'institution' => $internshipApplication->institution,
+            'student_status' => $internshipApplication->student_status,
         ]);
 
         return redirect('/admin/internship-application/approved');

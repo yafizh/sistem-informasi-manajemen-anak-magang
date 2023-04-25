@@ -37,7 +37,7 @@
                                             <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="/change-password?user_id={{ $employee->id }}">
+                                            <a class="dropdown-item" href="/change-password?user_id={{ $employee->user->id }}">
                                                 <i class="bx bx-edit-alt me-2"></i> Ganti Password
                                             </a>
                                             <form action="/admin/admin/{{ $employee->id }}" method="POST">
