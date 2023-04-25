@@ -138,8 +138,8 @@
                         <div data-i18n="Accordion">Pendaftaran</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
+                <li class="menu-item {{ ($sub_sidebar ?? '') === 'internship-programs' ? 'active' : '' }}">
+                    <a href="/admin/report/internship-programs" class="menu-link">
                         <div data-i18n="Accordion">Kegiatan Magang</div>
                     </a>
                 </li>

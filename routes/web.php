@@ -86,9 +86,11 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::prefix('report')->controller(AdminReportController::class)->group(function () {
         Route::get('internship-applications', 'internshipApplication');
+        Route::get('internship-programs', 'internshipProgram');
     });
     Route::prefix('print')->controller(AdminPrintController::class)->group(function () {
         Route::get('internship-applications', 'internshipApplication');
+        Route::get('internship-programs', 'internshipProgram');
     });
 });
 
