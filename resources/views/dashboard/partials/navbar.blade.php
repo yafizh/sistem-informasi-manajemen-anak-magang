@@ -38,14 +38,14 @@
                     </li>
                     @if (auth()->user()->employee || auth()->user()->student)
                         <li>
-                            <a class="dropdown-item" href="/profile">
+                            <a class="dropdown-item" href="/{{request()->segment(1)}}/profile">
                                 <i class="bx bx-user me-2"></i>
                                 <span class="align-middle">Profil</span>
                             </a>
                         </li>
                     @endif
                     <li>
-                        <a class="dropdown-item" href="/change-password">
+                        <a class="dropdown-item" href="/{{request()->segment(1)}}/change-password">
                             <i class="bx bx-cog me-2"></i>
                             <span class="align-middle">Ganti Password</span>
                         </a>

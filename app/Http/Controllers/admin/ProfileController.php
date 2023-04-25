@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
 class ProfileController extends Controller
 {
-    public function changePassword()
+    public function editPassword()
     {
         return view('dashboard.admin.settings.change_password', [
             'sidebar' => ''
