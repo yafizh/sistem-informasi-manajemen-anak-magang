@@ -9,6 +9,8 @@ use App\Http\Controllers\admin\UserStudentController as AdminUserStudentControll
 use App\Http\Controllers\admin\InternshipProgramController as AdminInternshipProgramController;
 use App\Http\Controllers\admin\InternshipStudentController as AdminInternshipStudentController;
 use App\Http\Controllers\admin\ProfileController as AdminProfileController;
+use App\Http\Controllers\admin\ReportController as AdminReportController;
+use App\Http\Controllers\admin\PrintController as AdminPrintController;
 use App\Http\Controllers\main\AuthController;
 use App\Http\Controllers\main\InternshipApplicationController as MainInternshipApplicationController;
 use App\Http\Controllers\supervisor\InternshipProgramController as SupervisorInternshipProgramController;
@@ -80,6 +82,13 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::controller(AdminProfileController::class)->group(function () {
         Route::get('/change-password', 'editPassword');
         Route::put('/change-password', 'updatePassword');
+    });
+
+    Route::prefix('report')->controller(AdminReportController::class)->group(function () {
+        Route::get('internship-applications', 'internshipApplication');
+    });
+    Route::prefix('print')->controller(AdminPrintController::class)->group(function () {
+        Route::get('internship-applications', 'internshipApplication');
     });
 });
 

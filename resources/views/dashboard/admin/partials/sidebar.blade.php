@@ -107,7 +107,7 @@
                 </li>
             </ul>
         </li>
-        <li class="menu-item {{ $sidebar === 'internship-programs' ? 'active open' : '' }}"">
+        <li class="menu-item {{ $sidebar === 'internship-programs' ? 'active open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bxs-book-bookmark"></i>
                 <div data-i18n="Account Settings">Kegiatan Magang</div>
@@ -127,15 +127,20 @@
         </li>
 
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Laporan</span></li>
-        <li class="menu-item">
+        <li class="menu-item {{ $sidebar === 'report' ? 'active open' : '' }}">
             <a href="javascript:void(0)" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bxs-file-pdf"></i>
                 <div data-i18n="User interface">Laporan</div>
             </a>
             <ul class="menu-sub">
+                <li class="menu-item {{ ($sub_sidebar ?? '') === 'internship-applications' ? 'active' : '' }}">
+                    <a href="/admin/report/internship-applications" class="menu-link">
+                        <div data-i18n="Accordion">Pendaftaran</div>
+                    </a>
+                </li>
                 <li class="menu-item">
                     <a href="#" class="menu-link">
-                        <div data-i18n="Accordion">Pendaftaran</div>
+                        <div data-i18n="Accordion">Kegiatan Magang</div>
                     </a>
                 </li>
                 <li class="menu-item">
@@ -150,11 +155,6 @@
                 </li>
                 <li class="menu-item">
                     <a href="#" class="menu-link">
-                        <div data-i18n="Accordion">Bimbingan</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
                         <div data-i18n="Accordion">Presensi Siswa</div>
                     </a>
                 </li>
@@ -165,12 +165,12 @@
                 </li>
                 <li class="menu-item">
                     <a href="#" class="menu-link">
-                        <div data-i18n="Accordion">Penilaian Siswa</div>
+                        <div data-i18n="Accordion">Tabel Presensi Siswa</div>
                     </a>
                 </li>
                 <li class="menu-item">
                     <a href="#" class="menu-link">
-                        <div data-i18n="Accordion">Penilaian Mahasiswa</div>
+                        <div data-i18n="Accordion">Tabel Presensi Mahasiswa</div>
                     </a>
                 </li>
             </ul>
