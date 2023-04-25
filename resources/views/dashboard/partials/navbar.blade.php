@@ -15,12 +15,12 @@
                     @if (auth()->user()->employee)
                         <div class="avatar">
                             <img src="{{ asset('storage/' . auth()->user()->employee->photo) }}" alt
-                                class="w-px-40 h-auto rounded-circle" />
+                                class="w-px-40 h-auto rounded-circle" style="object-fit: cover; aspect-ratio: 1;" />
                         </div>
                     @elseif (auth()->user()->student)
                         <div class="avatar">
                             <img src="{{ asset('storage/' . auth()->user()->student->photo) }}" alt
-                                class="w-px-40 h-auto rounded-circle" />
+                                class="w-px-40 h-auto rounded-circle" style="object-fit: cover; aspect-ratio: 1;" />
                         </div>
                     @else
                         Admin
@@ -34,24 +34,24 @@
                                     @if (auth()->user()->employee)
                                         <div class="avatar">
                                             <img src="{{ asset('storage/' . auth()->user()->employee->photo) }}" alt
-                                                class="w-px-40 h-auto rounded-circle" />
+                                                class="w-px-40 h-auto rounded-circle" style="object-fit: cover; aspect-ratio: 1;"  />
                                         </div>
                                     @elseif (auth()->user()->student)
                                         <div class="avatar">
                                             <img src="{{ asset('storage/' . auth()->user()->student->photo) }}" alt
-                                                class="w-px-40 h-auto rounded-circle" />
+                                                class="w-px-40 h-auto rounded-circle" style="object-fit: cover; aspect-ratio: 1;"  />
                                         </div>
                                     @endif
                                 </div>
                                 @if (auth()->user()->employee)
                                     <div class="flex-grow-1">
-                                        <span class="fw-semibold d-block">{{auth()->user()->employee->name}}</span>
-                                        <small class="text-muted">{{auth()->user()->status}}</small>
+                                        <span class="fw-semibold d-block">{{ auth()->user()->employee->name }}</span>
+                                        <small class="text-muted">{{ auth()->user()->status }}</small>
                                     </div>
                                 @elseif (auth()->user()->student)
                                     <div class="flex-grow-1">
-                                        <span class="fw-semibold d-block">{{auth()->user()->student->name}}</span>
-                                        <small class="text-muted">{{auth()->user()->status}}</small>
+                                        <span class="fw-semibold d-block">{{ auth()->user()->student->name }}</span>
+                                        <small class="text-muted">{{ auth()->user()->status }}</small>
                                     </div>
                                 @endif
                             </div>

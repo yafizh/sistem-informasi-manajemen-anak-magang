@@ -125,4 +125,12 @@ class InternshipProgramController extends Controller
         InternshipProgram::destroy($internshipProgram->id);
         return redirect('/admin/internship-programs?student_status=' . $internshipProgram->student_status);
     }
+
+    public function done(InternshipProgram $internshipProgram)
+    {
+        InternshipProgram::find($internshipProgram->id)->update([
+            'internship_status' => 2
+        ]);
+        return back();
+    }
 }

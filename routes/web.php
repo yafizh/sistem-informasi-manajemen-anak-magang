@@ -57,6 +57,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::resource('internship-programs', AdminInternshipProgramController::class);
     Route::get('internship-programs/{internshipProgram}/supervisor', [AdminInternshipProgramController::class, 'supervisor']);
+    Route::get('internship-programs/{internshipProgram}/done', [AdminInternshipProgramController::class, 'done']);
 
     Route::prefix('internship-application')->controller(AdminInternshipApplicationController::class)->group(function () {
         // Order Matters

@@ -57,9 +57,20 @@
                                 <input class="form-control" type="text" disabled
                                     value="{{ $internship_program->end_date }}" />
                             </div>
-                            <div class="mb-3 col-md-12 d-flex justify-content-end">
-                                <button class="btn btn-primary">Akhiri Kegiatan</button>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label d-block">Status</label>
+                                @if ($internship_program->internship_status == 2)
+                                    <span class="badge bg-label-success me-1">Selesai</span>
+                                @elseif ($internship_program->internship_status == 1)
+                                    <span class="badge bg-label-info me-1">Sedang Berjalan</span>
+                                @endif
                             </div>
+                            @if ($internship_program->internship_status == 1)
+                                <div class="mb-3 col-md-12 d-flex justify-content-end">
+                                    <a href="/admin/internship-programs/{{ $internship_program->id }}/done"
+                                        class="btn btn-primary">Akhiri Kegiatan</a>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

@@ -36,7 +36,7 @@
                                 <td class="text-center">{{ $internship_program->end_date }}</td>
                                 <td class="text-center">
                                     @if ($internship_program->internship_status == 2)
-                                        <span class="badge bg-label-primary me-1">Selesai</span>
+                                        <span class="badge bg-label-success me-1">Selesai</span>
                                     @elseif ($internship_program->internship_status == 1)
                                         <span class="badge bg-label-info me-1">Sedang Berjalan</span>
                                     @endif
