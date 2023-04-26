@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             'status' => 'Admin'
         ]);
 
-        // $this->call(EmployeeSeeder::class);
-        // $this->call(StudentSeeder::class);
+        $this->call(EmployeeSeeder::class);
+        $this->call(StudentSeeder::class);
     }
 }

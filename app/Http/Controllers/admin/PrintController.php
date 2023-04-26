@@ -148,4 +148,43 @@ class PrintController extends Controller
             'presences' => $presences
         ]);
     }
+
+    public function studentPresenceTable()
+    {
+        $student = Student::find(request()->get('student_id'));
+        if ($student->internshipStudent) {
+            $internshipProgram = $student->internshipStudent->internshipProgram;
+            $start_date = new Carbon($internshipProgram->start_date);
+            $end_date = new Carbon($internshipProgram->end_date);
+
+            $table = [];
+
+            $end_date->addMonth();
+            while ($start_date->month != $end_date->month) {
+                $presences = [];
+                for ($i = 1; $i <= 31; $i++) {
+                    $presence = StudentPresence::where('internship_student_id', $student->internshipStudent->id)
+                        ->whereRaw('DAY(date) = ?', $i)
+                        ->whereRaw('MONTH(date) = ?', $start_date->month)
+                        ->whereRaw('YEAR(date) = ?', $start_date->year);
+
+                    $presences[] = $presence->count() ? $presence->first()->status : '-';
+                }
+
+                $table[] = [
+                    'date' => $start_date->locale('ID')->getTranslatedMonthName() . ' ' . $start_date->year,
+                    'presences' => $presences,
+                ];
+
+                $start_date->addMonth();
+            }
+        }
+
+        $today = new Carbon();
+        return view('dashboard.admin.prints.student_presence_table', [
+            'student' => $student,
+            'today' => $today->day . ' ' . $today->locale('ID')->getTranslatedMonthName() . ' ' . $today->year,
+            'table' => $table ?? null
+        ]);
+    }
 }

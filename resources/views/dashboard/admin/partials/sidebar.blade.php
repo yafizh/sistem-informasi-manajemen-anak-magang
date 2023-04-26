@@ -163,13 +163,13 @@
                         <div data-i18n="Accordion">Presensi Mahasiswa</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
+                <li class="menu-item {{ ($sub_sidebar ?? '') === 'student-presence-table1' ? 'active' : '' }}">
+                    <a href="/admin/report/student-presence-table?student_status=1" class="menu-link">
                         <div data-i18n="Accordion">Tabel Presensi Siswa</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
+                <li class="menu-item {{ ($sub_sidebar ?? '') === 'student-presence-table2' ? 'active' : '' }}">
+                    <a href="/admin/report/student-presence-table?student_status=2" class="menu-link">
                         <div data-i18n="Accordion">Tabel Presensi Mahasiswa</div>
                     </a>
                 </li>
