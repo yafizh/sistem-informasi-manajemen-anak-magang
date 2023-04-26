@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\InternshipApplication;
 use App\Models\InternshipProgram;
+use App\Models\Student;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -42,7 +43,7 @@ class PrintController extends Controller
     public function internshipProgram()
     {
         $internship_programs = null;
-        if (request()->get('f') && request()->get('t')) {
+        if (!empty(request()->get('f')) && !empty(request()->get('t'))) {
             $internship_programs =
                 InternshipProgram::where(function ($q) {
                     $q->where('start_date', '>=', request()->get('f'))
@@ -74,6 +75,37 @@ class PrintController extends Controller
             't' => !empty(request()->get('t')) ? $t->day . ' ' . $t->locale('ID')->getTranslatedMonthName() . ' ' . $t->year : null,
             'today' => $today->day . ' ' . $today->locale('ID')->getTranslatedMonthName() . ' ' . $today->year,
             'internship_programs' => $internship_programs
+        ]);
+    }
+
+    public function student()
+    {
+        $students = null;
+        if (!empty(request()->get('f')) && !empty(request()->get('t'))) {
+            $students =
+                Student::where('student_status', request()->get('student_status'))
+                ->whereHas('internshipApplication', function ($q) {
+                    $q->where('verification_date', '>=', request()->get('f'))
+                        ->where('verification_date', '<=', request()->get('t'));
+                })->get();
+        } else
+            $students = Student::where('student_status', request()->get('student_status'))->get();
+
+        $students = $students->map(function ($student) {
+            $verification_date = new Carbon($student->internshipApplication->verification_date);
+            $student->internshipApplication->verification_date = $verification_date->day . " " . $verification_date->locale('ID')->getTranslatedMonthName() . " " . $verification_date->year;
+
+            return $student;
+        });
+
+        $today = new Carbon();
+        $f = new Carbon(request()->get('f'));
+        $t = new Carbon(request()->get('t'));
+        return view('dashboard.admin.prints.student', [
+            'f' => !empty(request()->get('f')) ? $f->day . ' ' . $f->locale('ID')->getTranslatedMonthName() . ' ' . $f->year : null,
+            't' => !empty(request()->get('t')) ? $t->day . ' ' . $t->locale('ID')->getTranslatedMonthName() . ' ' . $t->year : null,
+            'today' => $today->day . ' ' . $today->locale('ID')->getTranslatedMonthName() . ' ' . $today->year,
+            'students' => $students
         ]);
     }
 }

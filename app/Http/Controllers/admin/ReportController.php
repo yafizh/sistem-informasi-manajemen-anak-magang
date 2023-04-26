@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\InternshipApplication;
 use App\Models\InternshipProgram;
+use App\Models\Student;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -66,6 +67,34 @@ class ReportController extends Controller
             'sidebar' => 'report',
             'sub_sidebar' => 'internship-programs',
             'internship_programs' => $internship_programs
+        ]);
+    }
+
+    public function student()
+    {
+        $students = null;
+        if (request()->get('f') && request()->get('t')) {
+            $students =
+                Student::where('student_status', request()->get('student_status'))
+                ->whereHas('internshipApplication', function ($q) {
+                    $q->where('verification_date', '>=', request()->get('f'))
+                        ->where('verification_date', '<=', request()->get('t'));
+                })->get();
+        } else
+            $students = Student::where('student_status', request()->get('student_status'))->get();
+
+        $students = $students->map(function ($student) {
+            $verification_date = new Carbon($student->internshipApplication->verification_date);
+            $student->internshipApplication->verification_date = $verification_date->day . " " . $verification_date->locale('ID')->getTranslatedMonthName() . " " . $verification_date->year;
+
+            return $student;
+        });
+
+
+        return view('dashboard.admin.reports.student', [
+            'sidebar' => 'report',
+            'sub_sidebar' => 'student' . request()->get('student_status'),
+            'students' => $students
         ]);
     }
 }

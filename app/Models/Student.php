@@ -20,4 +20,9 @@ class Student extends Model
     {
         return $this->hasOne(InternshipStudent::class);
     }
+
+    public function internshipApplication()
+    {
+        return $this->belongsTo(internshipApplication::class);
+    }
 }
