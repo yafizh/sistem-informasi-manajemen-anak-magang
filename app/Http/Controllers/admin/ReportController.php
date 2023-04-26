@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\InternshipApplication;
 use App\Models\InternshipProgram;
 use App\Models\Student;
+use App\Models\StudentPresence;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -95,6 +96,41 @@ class ReportController extends Controller
             'sidebar' => 'report',
             'sub_sidebar' => 'student' . request()->get('student_status'),
             'students' => $students
+        ]);
+    }
+
+    public function studentPresence()
+    {
+        $presences = null;
+        if (request()->get('f') && request()->get('t')) {
+            $presences =
+                StudentPresence::whereHas('internshipStudent', function ($q) {
+                    $q->whereHas('student', function ($q) {
+                        $q->where('student_status', request()->get('student_status'));
+                    });
+                })
+                ->where('date', '>=', request()->get('f'))
+                ->where('date', '<=', request()->get('t'))
+                ->get();
+        } else
+            $presences =
+                StudentPresence::whereHas('internshipStudent', function ($q) {
+                    $q->whereHas('student', function ($q) {
+                        $q->where('student_status', request()->get('student_status'));
+                    });
+                })->get();
+
+        $presences = $presences->map(function ($presence) {
+            $date = new Carbon($presence->date);
+            $presence->date = $date->day . " " . $date->locale('ID')->getTranslatedMonthName() . " " . $date->year;
+
+            return $presence;
+        });
+
+        return view('dashboard.admin.reports.student_presence', [
+            'sidebar' => 'report',
+            'sub_sidebar' => 'student-presences' . request()->get('student_status'),
+            'presences' => $presences
         ]);
     }
 }

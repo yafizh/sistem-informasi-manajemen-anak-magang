@@ -88,11 +88,13 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('internship-applications', 'internshipApplication');
         Route::get('internship-programs', 'internshipProgram');
         Route::get('students', 'student');
+        Route::get('student-presences', 'studentPresence');
     });
     Route::prefix('print')->controller(AdminPrintController::class)->group(function () {
         Route::get('internship-applications', 'internshipApplication');
         Route::get('internship-programs', 'internshipProgram');
         Route::get('students', 'student');
+        Route::get('student-presences', 'studentPresence');
     });
 });
 

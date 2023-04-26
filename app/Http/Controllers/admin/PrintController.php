@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\InternshipApplication;
 use App\Models\InternshipProgram;
 use App\Models\Student;
+use App\Models\StudentPresence;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -106,6 +107,45 @@ class PrintController extends Controller
             't' => !empty(request()->get('t')) ? $t->day . ' ' . $t->locale('ID')->getTranslatedMonthName() . ' ' . $t->year : null,
             'today' => $today->day . ' ' . $today->locale('ID')->getTranslatedMonthName() . ' ' . $today->year,
             'students' => $students
+        ]);
+    }
+
+    public function studentPresence()
+    {
+        $presences = null;
+        if (!empty(request()->get('f')) && !empty(request()->get('t'))) {
+            $presences =
+                StudentPresence::whereHas('internshipStudent', function ($q) {
+                    $q->whereHas('student', function ($q) {
+                        $q->where('student_status', request()->get('student_status'));
+                    });
+                })
+                ->where('date', '>=', request()->get('f'))
+                ->where('date', '<=', request()->get('t'))
+                ->get();
+        } else
+            $presences =
+                StudentPresence::whereHas('internshipStudent', function ($q) {
+                    $q->whereHas('student', function ($q) {
+                        $q->where('student_status', request()->get('student_status'));
+                    });
+                })->get();
+
+        $presences = $presences->map(function ($presence) {
+            $date = new Carbon($presence->date);
+            $presence->date = $date->day . " " . $date->locale('ID')->getTranslatedMonthName() . " " . $date->year;
+
+            return $presence;
+        });
+
+        $today = new Carbon();
+        $f = new Carbon(request()->get('f'));
+        $t = new Carbon(request()->get('t'));
+        return view('dashboard.admin.prints.student_presence', [
+            'f' => !empty(request()->get('f')) ? $f->day . ' ' . $f->locale('ID')->getTranslatedMonthName() . ' ' . $f->year : null,
+            't' => !empty(request()->get('t')) ? $t->day . ' ' . $t->locale('ID')->getTranslatedMonthName() . ' ' . $t->year : null,
+            'today' => $today->day . ' ' . $today->locale('ID')->getTranslatedMonthName() . ' ' . $today->year,
+            'presences' => $presences
         ]);
     }
 }

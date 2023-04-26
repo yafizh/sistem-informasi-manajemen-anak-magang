@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Laporan</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -28,24 +27,39 @@
             <thead>
                 <tr>
                     <th class="text-center align-middle no-td">No</th>
-                    <th class="text-center align-middle">Tanggal Diterima</th>
+                    <th class="text-center align-middle">Tanggal</th>
                     <th class="text-center align-middle">
                         {{ request()->get('student_status') == 1 ? 'NIS/NISN' : 'NIM/NPM' }}
                     </th>
                     <th class="text-center align-middle">Nama Lengkap</th>
-                    <th class="text-center align-middle">Nama Instansi</th>
+                    <th class="text-center align-middle">Status</th>
                 </tr>
             </thead>
             <tbody>
-                @if ($students->count())
-                    @foreach ($students as $student)
+                @if ($presences->count())
+                    @foreach ($presences as $presence)
                         <tr>
                             <td class="text-center align-middle">{{ $loop->iteration }}</td>
+                            <td class="text-center align-middle">{{ $presence->date }}</td>
                             <td class="text-center align-middle">
-                                {{ $student->internshipApplication->verification_date }}</td>
-                            <td class="text-center align-middle">{{ $student->id_number }}</td>
-                            <td class="text-center align-middle">{{ $student->name }}</td>
-                            <td class="text-center align-middle">{{ $student->institution }}</td>
+                                {{ $presence->internshipStudent->student->id_number }}
+                            </td>
+                            <td class="align-middle">{{ $presence->internshipStudent->student->name }}</td>
+                            <td class="text-center align-middle">
+                                @if ($presence->status == 1)
+                                    Hadir
+                                @elseif ($presence->status == 2)
+                                    Sakit
+                                @elseif ($presence->status == 3)
+                                    Izin
+                                @else
+                                    @if ($presence->date < Date('Y-m-d'))
+                                        Alpa
+                                    @else
+                                        Belum Mengisi Presensi
+                                    @endif
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                 @else
