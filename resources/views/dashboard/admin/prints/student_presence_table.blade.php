@@ -25,6 +25,11 @@
         <span>: {{ $student->name }}</span>
     </section>
     <main class="p-3">
+        <style>
+            .table-bordered {
+                font-size: .8rem;
+            }
+        </style>
         @if ($table)
             <div class="table-responsive text-nowrap">
                 <table class="table table-bordered">
