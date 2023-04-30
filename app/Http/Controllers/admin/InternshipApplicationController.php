@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\InternshipApplication as MailInternshipApplication;
 use App\Models\InternshipApplication;
 use App\Models\Student;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class InternshipApplicationController extends Controller
 {
@@ -48,9 +50,10 @@ class InternshipApplicationController extends Controller
 
     public function approve(InternshipApplication $internshipApplication)
     {
+        $application_status = 2;
         InternshipApplication::where('id', $internshipApplication->id)->update([
             'verification_date' => Carbon::now()->toDateString(),
-            'application_status' => 2
+            'application_status' => $application_status
         ]);
 
         $user_id = User::create([
@@ -68,6 +71,9 @@ class InternshipApplicationController extends Controller
             'student_status' => $internshipApplication->student_status,
         ]);
 
+        Mail::to($internshipApplication->email)
+            ->send((new MailInternshipApplication($internshipApplication->name, $application_status)));
+
         return redirect('/admin/internship-application/approved');
     }
 
@@ -84,10 +90,14 @@ class InternshipApplicationController extends Controller
 
     public function reject(InternshipApplication $internshipApplication)
     {
+        $application_status = 3;
         InternshipApplication::where('id', $internshipApplication->id)->update([
             'verification_date' => Carbon::now()->toDateString(),
-            'application_status' => 3
+            'application_status' => $application_status
         ]);
+
+        Mail::to($internshipApplication->email)
+            ->send((new MailInternshipApplication($internshipApplication->name, $application_status)));
 
         return redirect('/admin/internship-application/rejected');
     }

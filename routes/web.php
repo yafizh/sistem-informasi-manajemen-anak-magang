@@ -13,6 +13,7 @@ use App\Http\Controllers\admin\ReportController as AdminReportController;
 use App\Http\Controllers\admin\PrintController as AdminPrintController;
 use App\Http\Controllers\main\AuthController;
 use App\Http\Controllers\main\InternshipApplicationController as MainInternshipApplicationController;
+use App\Http\Controllers\main\InternshipProgramController as MainInternshipProgramController;
 use App\Http\Controllers\supervisor\InternshipProgramController as SupervisorInternshipProgramController;
 use App\Http\Controllers\supervisor\StudentController as SupervisorStudentController;
 use App\Http\Controllers\supervisor\StudentPresenceController as SupervisorStudentPresenceController;
@@ -21,8 +22,6 @@ use App\Http\Controllers\supervisor\ProfileController as SupervisorProfileContro
 use App\Http\Controllers\student\StudentPresenceController as StudentStudentPresenceController;
 use App\Http\Controllers\student\StudentEvaluationController as StudentStudentEvaluationController;
 use App\Http\Controllers\student\ProfileController as StudentProfileController;
-use App\Http\Controllers\ProfileController;
-use App\Models\StudentEvaluation;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -156,3 +155,5 @@ Route::prefix('student')->middleware('auth')->group(function () {
         Route::put('/change-password', 'updatePassword');
     });
 });
+
+Route::get('/certificate/{student}', [MainInternshipProgramController::class, 'certificate']);

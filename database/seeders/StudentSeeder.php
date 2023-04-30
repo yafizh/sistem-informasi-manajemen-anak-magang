@@ -16,7 +16,7 @@ class StudentSeeder extends Seeder
     {
         for ($i = 0; $i < 10; $i++) {
             $id_number = rand(10000000, 99999999);
-            $name = 'Nama ' . Str::random(5);
+            $name = 'Nama ' . $i + 1;
             $email = Str::random(10) . "@gmail.com";
             $institution = 'UNISKA';
             $student_status = 2;

@@ -4,8 +4,6 @@ namespace App\Http\Controllers\main;
 
 use App\Http\Controllers\Controller;
 use App\Models\InternshipApplication;
-use App\Models\Student;
-use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 

@@ -27,10 +27,12 @@
                 </ul>
                 <div class="card mb-4">
                     <div class="card-body">
-                        <div class="d-flex justify-content-end mb-3">
-                            <a href="/admin/internship-students/{{ $internship_program->id }}/create?student_status={{ request()->get('student_status') }}"
-                                class="btn btn-primary">Tambah</a>
-                        </div>
+                        @if ($internship_program->internship_status == 1)
+                            <div class="d-flex justify-content-end mb-3">
+                                <a href="/admin/internship-students/{{ $internship_program->id }}/create?student_status={{ request()->get('student_status') }}"
+                                    class="btn btn-primary">Tambah</a>
+                            </div>
+                        @endif
                         <div class="table-responsive text-nowrap pb-5" style="overflow: hidden!important;">
                             <table class="table">
                                 <thead>
@@ -57,6 +59,12 @@
                                                             <i class="bx bx-dots-vertical-rounded"></i>
                                                         </button>
                                                         <div class="dropdown-menu">
+                                                            @if ($internship_program->internship_status == 2)
+                                                                <a href="/certificate/{{ $student->id }}"
+                                                                    target="_blank" class="dropdown-item">
+                                                                    <i class='bx bxs-file-pdf'></i> Sertifikat
+                                                                </a>
+                                                            @endif
                                                             <form
                                                                 action="/admin/internship-students/{{ $internship_program->id }}/{{ $student->id }}"
                                                                 method="POST">

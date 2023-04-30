@@ -24,7 +24,8 @@ class StudentEvaluationController extends Controller
         return view('dashboard.student.evaluations.index', [
             'evaluation' => $evaluation,
             'average' => $average,
-            'sidebar' => 'evaluations'
+            'sidebar' => 'evaluations',
+            'internship_status' => Auth::user()->student->internshipStudent->internshipProgram->internship_status,
         ]);
     }
 }

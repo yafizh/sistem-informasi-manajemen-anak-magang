@@ -97,7 +97,11 @@
                                         <input class="form-control text-center" type="number" disabled
                                             value="{{ number_format((float) $average, 2, '.', '') }}" />
                                     </div>
-                                    <div class="mb-3 col-12 justify-content-end d-flex">
+                                    <div class="mb-3 col-12 justify-content-end d-flex gap-2">
+                                        @if ($internship_program->internship_status == 2)
+                                            <a href="/certificate/{{ $internshipStudent->student->id }}" target="_blank"
+                                                class="btn btn-success">Sertifikat</a>
+                                        @endif
                                         <a href="/supervisor/students/{{ $internship_program->id }}/evaluations/{{ $internshipStudent->id }}?student_status={{ $internship_program->student_status }}"
                                             class="btn btn-primary">Penilaian</a>
                                     </div>

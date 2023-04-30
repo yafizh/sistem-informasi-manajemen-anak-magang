@@ -53,6 +53,12 @@
                             <input class="form-control text-center" type="number" disabled
                                 value="{{ number_format((float) $average, 2, '.', '') }}" />
                         </div>
+                        @if ($internship_status == 2)
+                            <div class="mb-3 col-12 d-flex justify-content-end">
+                                <a href="/certificate/{{ auth()->user()->student->id }}" target="_blank"
+                                    class="btn btn-success">Sertifikat</a>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
