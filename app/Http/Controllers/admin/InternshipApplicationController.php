@@ -58,7 +58,7 @@ class InternshipApplicationController extends Controller
 
         $user_id = User::create([
             'username' => $internshipApplication->id_number,
-            'password' => $internshipApplication->id_number,
+            'password' => bcrypt($internshipApplication->id_number),
             'status' => 'Student'
         ])->id;
         Student::create([
