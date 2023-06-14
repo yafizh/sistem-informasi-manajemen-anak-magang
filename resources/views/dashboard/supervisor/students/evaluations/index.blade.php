@@ -98,7 +98,7 @@
                                         @endphp
                                         <label class="form-label">Nilai Rata-Rata</label>
                                         <input class="form-control text-center" type="number" disabled
-                                            value="{{ number_format((float) $average/8, 2, '.', '') }}" />
+                                            value="{{ number_format((float) $average / 8, 2, '.', '') }}" />
                                     </div>
                                     <div class="mb-3 col-12 justify-content-end d-flex gap-2">
                                         @if ($internship_program->internship_status == 2)
