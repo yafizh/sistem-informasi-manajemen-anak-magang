@@ -93,9 +93,12 @@
                                             value="{{ $internshipStudent->evaluation->creativity ?? 0 }}" />
                                     </div>
                                     <div class="mb-3 col-12">
+                                        @php
+                                            $average = ($internshipStudent->evaluation->communication ?? 0) + ($internshipStudent->evaluation->creativity ?? 0) + ($internshipStudent->evaluation->attitude ?? 0) + ($internshipStudent->evaluation->discipline ?? 0) + ($internshipStudent->evaluation->diligence ?? 0) + ($internshipStudent->evaluation->independent_work ?? 0) + ($internshipStudent->evaluation->collaboration ?? 0) + ($internshipStudent->evaluation->accuracy ?? 0);
+                                        @endphp
                                         <label class="form-label">Nilai Rata-Rata</label>
                                         <input class="form-control text-center" type="number" disabled
-                                            value="{{ number_format((float) $average, 2, '.', '') }}" />
+                                            value="{{ number_format((float) $average/8, 2, '.', '') }}" />
                                     </div>
                                     <div class="mb-3 col-12 justify-content-end d-flex gap-2">
                                         @if ($internship_program->internship_status == 2)
