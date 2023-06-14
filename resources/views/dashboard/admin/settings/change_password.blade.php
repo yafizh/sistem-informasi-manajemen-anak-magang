@@ -6,7 +6,7 @@
 
         <div class="row justify-content-center">
             <div class="col-12 col-md-6">
-                <form action="/change-password" method="POST">
+                <form action="/admin/change-password" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="card mb-4">
