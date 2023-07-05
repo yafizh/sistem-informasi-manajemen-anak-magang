@@ -2,10 +2,40 @@
 
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold text-center">Penilaian</h4>
-
         <div class="row justify-content-center">
-            <div class="col-12 col-md-8">
+            <div class="col-12 col-md-6">
+                <h4 class="fw-bold text-center">Pembimbing</h4>
+                <div class="card">
+                    <div class="card-body">
+                        {{-- <div class="mb-3 d-flex justify-content-center">
+                            <img class="rounded-circle" style="object-fit: cover; width: 18rem; aspect-ratio:1;"
+                                src="{{ asset('storage/' . $supervisor->photo) }}">
+                        </div> --}}
+                        <div class="mb-3">
+                            <label class="form-label">NIP</label>
+                            <input class="form-control text-center" type="text" disabled
+                                value="{{ $supervisor->id_number }}" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Nama</label>
+                            <input class="form-control text-center" type="text" disabled
+                                value="{{ $supervisor->name }}" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Nomor Telepon</label>
+                            <input class="form-control text-center" type="text" disabled
+                                value="{{ $supervisor->phone_number }}" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input class="form-control text-center" type="text" disabled
+                                value="{{ $supervisor->email }}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <h4 class="fw-bold text-center">Penilaian</h4>
                 <div class="card">
                     <div class="card-body row">
                         <div class="mb-3 col-12 col-md-6">

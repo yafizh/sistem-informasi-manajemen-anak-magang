@@ -15,12 +15,12 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Utama</span>
         </li>
-        <li class="menu-item {{ $sidebar === 'dashboard' ? 'active' : '' }}">
+        {{-- <li class="menu-item {{ $sidebar === 'dashboard' ? 'active' : '' }}">
             <a href="/admin" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
-        </li>
+        </li> --}}
         <li class="menu-item {{ $sidebar === 'employees' ? 'active' : '' }}">
             <a href="/admin/employees" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-user-badge"></i>

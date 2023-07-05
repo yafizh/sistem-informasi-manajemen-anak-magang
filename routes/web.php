@@ -46,9 +46,10 @@ Route::get('/internship-application', function () {
 
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/', function () {
-        return view('dashboard.admin.dashboard.index', [
-            'sidebar' => 'dashboard'
-        ]);
+        // return view('dashboard.admin.dashboard.index', [
+        //     'sidebar' => 'dashboard'
+        // ]);
+        return redirect('/admin/employees');
     });
     Route::resource('students', AdminStudentController::class);
     Route::resource('employees', AdminEmployeeController::class);
@@ -101,9 +102,10 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
 Route::prefix('supervisor')->middleware('auth')->group(function () {
     Route::get('/', function () {
-        return view('dashboard.supervisor.dashboard.index', [
-            'sidebar' => 'dashboard'
-        ]);
+        // return view('dashboard.supervisor.dashboard.index', [
+        //     'sidebar' => 'dashboard'
+        // ]);
+        return redirect('/supervisor/internship-programs?student_status=1');
     });
 
     Route::prefix('internship-programs')

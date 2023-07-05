@@ -12,12 +12,12 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1">
-        <li class="menu-item {{ $sidebar === 'dashboard' ? 'active' : '' }}">
+        {{-- <li class="menu-item {{ $sidebar === 'dashboard' ? 'active' : '' }}">
             <a href="/supervisor" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
-        </li>
+        </li> --}}
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Bimbingan Magang</span>
         </li>

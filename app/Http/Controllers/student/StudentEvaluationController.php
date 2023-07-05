@@ -22,6 +22,7 @@ class StudentEvaluationController extends Controller
         ]) / 8;
 
         return view('dashboard.student.evaluations.index', [
+            'supervisor' => Auth::user()->student->internshipStudent->internshipProgram->supervisor,
             'evaluation' => $evaluation,
             'average' => $average,
             'sidebar' => 'evaluations',
