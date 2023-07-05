@@ -19,6 +19,7 @@
                             <th class="text-center">Tanggal</th>
                             <th class="text-center">Status</th>
                             <th class="text-center">Kegiatan</th>
+                            <th class="text-center">Lokasi</th>
                             <th class="fit">Aksi</th>
                         </tr>
                     </thead>
@@ -42,7 +43,8 @@
                                         @endif
                                     @endif
                                 </td>
-                                <td>{{ $presence->activity ?? 'Belum Mengisi Kegiatan' }}</td>
+                                <td>{{ $presence->activity ?? 'Belum Mengisi' }}</td>
+                                <td>{{ $presence->activity_location ?? 'Belum Mengisi' }}</td>
                                 <td class="text-center">
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow"

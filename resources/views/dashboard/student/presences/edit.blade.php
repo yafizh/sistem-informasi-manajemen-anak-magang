@@ -28,6 +28,11 @@
                                 <label for="activity" class="form-label">Kegiatan</label>
                                 <textarea name="activity" id="activity" class="form-control">{{ $student_presence->activity }}</textarea>
                             </div>
+                            <div class="mb-3">
+                                <label for="activity_location" class="form-label">Lokasi Kegiatan</label>
+                                <input type="text" class="form-control" name="activity_location" id="activity_location"
+                                    value="{{ $student_presence->activity_location }}" />
+                            </div>
                             <div class="mb-3 d-flex justify-content-between">
                                 <a href="/student/presences" class="btn btn-secondary">Kembali</a>
                                 <button type="submit" class="btn btn-primary">Simpan</button>

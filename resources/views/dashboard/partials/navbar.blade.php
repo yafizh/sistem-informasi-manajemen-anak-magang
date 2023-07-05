@@ -46,12 +46,12 @@
                                 @if (auth()->user()->employee)
                                     <div class="flex-grow-1">
                                         <span class="fw-semibold d-block">{{ auth()->user()->employee->name }}</span>
-                                        <small class="text-muted">{{ auth()->user()->status }}</small>
+                                        <small class="text-muted">Pembimbing</small>
                                     </div>
                                 @elseif (auth()->user()->student)
                                     <div class="flex-grow-1">
                                         <span class="fw-semibold d-block">{{ auth()->user()->student->name }}</span>
-                                        <small class="text-muted">{{ auth()->user()->status }}</small>
+                                        <small class="text-muted">{{ auth()->user()->student->student_status == 'Student' ? "Siswa Magang" : 'Mahasiswa' }}</small>
                                     </div>
                                 @endif
                             </div>

@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('internship_student_id');
             $table->date('date');
+            $table->string('activity_location')->nullable();
             $table->text('activity')->nullable();
             $table->unsignedTinyInteger('status')->nullable()->comment('NULL=Alpa|1=Hadir|2=Sakit|3=Izin');
             $table->timestamps();

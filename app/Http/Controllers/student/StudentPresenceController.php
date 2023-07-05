@@ -42,6 +42,7 @@ class StudentPresenceController extends Controller
     {
         $validatedData = $request->validate([
             'activity' => 'required',
+            'activity_location' => 'required'
         ]);
 
         $validatedData['status'] = 1;

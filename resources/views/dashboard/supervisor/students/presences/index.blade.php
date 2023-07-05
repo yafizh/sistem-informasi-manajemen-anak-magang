@@ -97,7 +97,7 @@
                                                         <div class="dropdown-menu">
                                                             <a class="dropdown-item"
                                                                 href="/supervisor/students/{{ $internship_program->id }}/presences/{{ $student_presence->id }}/edit">
-                                                                <i class="bx bx-edit-alt me-2"></i> Edit
+                                                                <i class="bx bx-edit-alt me-2"></i> Edit/Lihat
                                                             </a>
                                                             <form
                                                                 action="/supervisor/students/{{ $internship_program->id }}/presences/{{ $student_presence->id }}"

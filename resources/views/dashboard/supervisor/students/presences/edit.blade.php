@@ -62,6 +62,21 @@
                     </div>
                 </div>
             </div>
+            <div class="col-12 col-md-6">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label">Kegiatan</label>
+                            <textarea class="form-control" disabled>{{ $student_presence->activity }}</textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Lokasi Kegiatan</label>
+                            <input type="text" class="form-control" disabled
+                                value="{{ $student_presence->activity_location }}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script>

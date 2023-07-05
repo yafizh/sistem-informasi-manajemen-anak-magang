@@ -20,8 +20,8 @@ class InternshipProgramController extends Controller
                     $start_date = new Carbon($item->start_date);
                     $end_date = new Carbon($item->end_date);
 
-                    $item->start_date = $start_date->day . ' ' . $start_date->locale('ID')->getTranslatedDayName() . ' ' . $start_date->year;
-                    $item->end_date = $end_date->day . ' ' . $end_date->locale('ID')->getTranslatedDayName() . ' ' . $end_date->year;
+                    $item->start_date = $start_date->day . ' ' . $start_date->locale('ID')->getTranslatedMonthName() . ' ' . $start_date->year;
+                    $item->end_date = $end_date->day . ' ' . $end_date->locale('ID')->getTranslatedMonthName() . ' ' . $end_date->year;
 
                     return $item;
                 });
