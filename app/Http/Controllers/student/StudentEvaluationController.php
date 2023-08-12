@@ -9,7 +9,7 @@ class StudentEvaluationController extends Controller
 {
     public function index()
     {
-        $evaluation = Auth::user()->student->internshipStudent->evaluation;
+        $evaluation = Auth::user()->student->internshipStudent->evaluation ?? null;
         $average = array_sum([
             $evaluation->attitude ?? 0,
             $evaluation->discipline ?? 0,

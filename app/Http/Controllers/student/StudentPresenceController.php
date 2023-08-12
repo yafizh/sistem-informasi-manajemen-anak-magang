@@ -12,15 +12,18 @@ class StudentPresenceController extends Controller
 {
     public function index()
     {
-        $student_presence = Auth::user()->student->internshipStudent->presences->filter(function ($presences) {
-            return $presences->date <= Date("Y-m-d");
-        });
+        $student_presence = [];
+        if (Auth::user()->student->internshipStudent) {
+            $student_presence = Auth::user()->student->internshipStudent->presences->filter(function ($presences) {
+                return $presences->date <= Date("Y-m-d");
+            });
 
-        $student_presence = $student_presence->map(function ($presences) {
-            $date = new Carbon($presences->date);
-            $presences->date = $date->locale('ID')->getTranslatedDayName() . ', ' . $date->day . ' ' . $date->locale('ID')->getTranslatedMonthName() . ' ' . $date->year;
-            return $presences;
-        });
+            $student_presence = $student_presence->map(function ($presences) {
+                $date = new Carbon($presences->date);
+                $presences->date = $date->locale('ID')->getTranslatedDayName() . ', ' . $date->day . ' ' . $date->locale('ID')->getTranslatedMonthName() . ' ' . $date->year;
+                return $presences;
+            });
+        }
 
         return view('dashboard.student.presences.index', [
             'sidebar' => 'presences',
@@ -54,30 +57,32 @@ class StudentPresenceController extends Controller
 
     public function table()
     {
-        $internshipProgram = Auth::user()->student->internshipStudent->internshipProgram;
-        $start_date = new Carbon($internshipProgram->start_date);
-        $end_date = new Carbon($internshipProgram->end_date);
-
         $table = [];
+        if (Auth::user()->student->internshipStudent) {
+            $internshipProgram = Auth::user()->student->internshipStudent->internshipProgram;
+            $start_date = new Carbon($internshipProgram->start_date);
+            $end_date = new Carbon($internshipProgram->end_date);
 
-        $end_date->addMonth();
-        while ($start_date->month != $end_date->month) {
-            $presences = [];
-            for ($i = 1; $i <= 31; $i++) {
-                $presence = StudentPresence::where('internship_student_id', Auth::user()->student->internshipStudent->id)
-                    ->whereRaw('DAY(date) = ?', $i)
-                    ->whereRaw('MONTH(date) = ?', $start_date->month)
-                    ->whereRaw('YEAR(date) = ?', $start_date->year);
 
-                $presences[] = $presence->count() ? $presence->first()->status : '-';
+            $end_date->addMonth();
+            while ($start_date->month != $end_date->month) {
+                $presences = [];
+                for ($i = 1; $i <= 31; $i++) {
+                    $presence = StudentPresence::where('internship_student_id', Auth::user()->student->internshipStudent->id)
+                        ->whereRaw('DAY(date) = ?', $i)
+                        ->whereRaw('MONTH(date) = ?', $start_date->month)
+                        ->whereRaw('YEAR(date) = ?', $start_date->year);
+
+                    $presences[] = $presence->count() ? $presence->first()->status : '-';
+                }
+
+                $table[] = [
+                    'date' => $start_date->locale('ID')->getTranslatedMonthName() . ' ' . $start_date->year,
+                    'presences' => $presences,
+                ];
+
+                $start_date->addMonth();
             }
-
-            $table[] = [
-                'date' => $start_date->locale('ID')->getTranslatedMonthName() . ' ' . $start_date->year,
-                'presences' => $presences,
-            ];
-
-            $start_date->addMonth();
         }
 
         return view('dashboard.student.presences.table', [
