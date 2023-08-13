@@ -99,11 +99,14 @@
     <div class="bar" style="bottom: -300; left: -40"></div>
 
     <main>
-        <div style="width: 10rem; margin: 2rem auto">
+        <div style="width: 10rem; margin: 1rem auto">
             <img src="https://www.telkom.co.id/images/bumper_telkom_indonesia.webp" style="width: 100%" />
         </div>
-        <img src="{{asset('assets/img/badge.png')}}" style="width: 14rem; position: absolute; top: 40; right: 100; z-index: 99;" />
+        <img src="{{ asset('assets/img/badge.png') }}"
+            style="width: 14rem; position: absolute; top: 40; right: 100; z-index: 99;" />
         <div class="certificate">SERTIFIKAT</div>
+        <div>dengan nilai</div>
+        <h1>{{ $evaluation }}</h1>
         <div class="to">diberikan kepada</div>
         <div class="name">{{ $name }}</div>
         <div class="id_number">{{ $student_status == 1 ? 'NIS/NISN' : 'NIM/NPM' }}. {{ $id_number }}</div>
